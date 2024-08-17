@@ -1,0 +1,8 @@
+signModule=true
+ignition.signing.keystoreFile=/path/to/keystore.jks
+ignition.signing.keystorePassword=keystorePassword
+ignition.signing.certFile=/path/to/code-signing.chain.crt
+ignition.signing.certAlias=certAlias
+ignition.signing.certPassword=certPassword
+hostGateway=https://example.localtest.me:443
+version=0.0.1-SNAPSHOT

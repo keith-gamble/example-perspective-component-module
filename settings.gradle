@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+		mavenCentral()
+        maven {
+            url 'https://nexus.inductiveautomation.com/repository/public'
+        }
+    }
+}
+
+rootProject.name = "example-component-library"
+
+include(
+	":",
+    ":common",
+    ":gateway",
+    ":designer",
+    ":web"
+)

@@ -1,0 +1,34 @@
+.dg-example-button {
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: var(--borderRadius);
+    -webkit-border-radius: var(--borderRadius);
+    cursor: pointer;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    transition-property: box-shadow, background-color;
+}
+
+.dg-example-button:enabled:hover {
+    box-shadow: var(--boxShadow2);
+}
+
+/* Primary button */
+
+.dg-example-button {
+    background-color: peachpuff;
+    border: var(--containerBorder);
+    color: black;
+}
+
+.dg-example-button:enabled:active {
+    box-shadow: var(--boxShadow--inset);
+    border: none;
+}
+
+.dg-example-button:disabled {
+    background-color: var(--callToAction--disabled);
+    border: var(--border--disabled);
+    color: var(--neutral-30);
+    cursor: not-allowed;
+}
