@@ -2,6 +2,8 @@ package dev.bwdesigngroup.perspective.examples.common.component.input;
 
 import java.util.List;
 import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.IOException;
 
 import com.inductiveautomation.ignition.common.jsonschema.JsonSchema;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
@@ -34,7 +36,15 @@ public class Button  {
     // unique ID of the component which perfectly matches that provided in the javascript's ComponentMeta implementation
     public static String COMPONENT_ID = "examples.input.button";
 
-	// final BufferedImage buttonImage = new 
+	private static BufferedImage loadThumbnail() {
+        try {
+            return ImageIO.read(Button.class.getResourceAsStream("/img/button-thumb.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      * Components register with the Java side ComponentRegistry but providing a ComponentDescriptor.  Here we
      * build the descriptor for this one component. Icons on the component palette are optional.
@@ -46,7 +56,7 @@ public class Button  {
         .setSchema(getSchema("example-button.props.json"))
 		.setEvents(List.of(ACTIONPERFORMED_EVENT_DESCRIPTOR))
         .setName("Example Button")
-        .addPaletteEntry("", "Example Button", "A better button.", null, null)
+        .addPaletteEntry("", "Example Button", "A better button.", loadThumbnail(), null)
         .setDefaultMetaName("example-button")
         .setResources(ExampleComponents.BROWSER_RESOURCES)
         .build();
