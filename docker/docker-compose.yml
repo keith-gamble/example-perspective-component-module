@@ -1,8 +1,8 @@
 services:
   gateway:
     image: bwdesigngroup/ignition-docker:8.1.37
-    ports:
-      - 8088:8088
+    # ports:
+    #   - 8088:8088
     environment:
       DEVELOPER_MODE: Y
       SYMLINK_GITIGNORE: false

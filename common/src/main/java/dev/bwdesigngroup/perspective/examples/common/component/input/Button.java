@@ -2,6 +2,8 @@ package dev.bwdesigngroup.perspective.examples.common.component.input;
 
 import java.util.List;
 import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
@@ -38,13 +40,31 @@ public class Button  {
 
 	private static BufferedImage loadThumbnail() {
         try {
-            return ImageIO.read(Button.class.getResourceAsStream("/img/button-thumb.png"));
+			final int THUMBNAIL_WIDTH = 70;
+			final int THUMBNAIL_HEIGHT = 35;
+
+            BufferedImage originalImage = ImageIO.read(Button.class.getResourceAsStream("/img/button-thumb.png"));
+            
+            // Create a new BufferedImage with the desired size
+            BufferedImage resizedImage = new BufferedImage(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, BufferedImage.TYPE_INT_ARGB);
+            
+            // Get the Graphics2D object and set rendering hints for better quality
+            Graphics2D g2d = resizedImage.createGraphics();
+            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            
+            // Draw the original image onto the new image, scaling it to fit
+            g2d.drawImage(originalImage, 0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, null);
+            g2d.dispose();
+            
+            return resizedImage;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
-
+ 
     /**
      * Components register with the Java side ComponentRegistry but providing a ComponentDescriptor.  Here we
      * build the descriptor for this one component. Icons on the component palette are optional.

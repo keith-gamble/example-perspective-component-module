@@ -10,7 +10,6 @@ import com.inductiveautomation.perspective.common.api.ComponentRegistry;
 import com.inductiveautomation.perspective.gateway.api.PerspectiveContext;
 
 import dev.bwdesigngroup.perspective.examples.common.Constants;
-import dev.bwdesigngroup.perspective.examples.common.ExampleComponents;
 import dev.bwdesigngroup.perspective.examples.common.component.input.Button;
 
 /**

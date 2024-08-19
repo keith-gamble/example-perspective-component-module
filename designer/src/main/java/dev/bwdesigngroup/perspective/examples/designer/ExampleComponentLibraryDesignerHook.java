@@ -1,28 +1,19 @@
 package dev.bwdesigngroup.perspective.examples.designer;
 
-import java.io.IOException;
-
 import javax.swing.Icon;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 
-import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
-import org.apache.batik.util.XMLResourceDescriptor;
-import org.w3c.dom.svg.SVGDocument;
-
-import com.inductiveautomation.ignition.client.icons.SvgIconUtil;
 import com.inductiveautomation.ignition.common.BundleUtil;
 import com.inductiveautomation.ignition.common.licensing.LicenseState;
 import com.inductiveautomation.ignition.common.util.LoggerEx;
 import com.inductiveautomation.ignition.designer.model.AbstractDesignerModuleHook;
 import com.inductiveautomation.ignition.designer.model.DesignerContext;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
-import com.inductiveautomation.perspective.designer.DesignerHook;
 import com.inductiveautomation.perspective.designer.api.PerspectiveDesignerInterface;
 
 import dev.bwdesigngroup.perspective.examples.common.DelegatingComponentDescriptor;
 import dev.bwdesigngroup.perspective.examples.common.component.input.Button;
-import dev.bwdesigngroup.perspective.examples.designer.IconUtilities;
 
 /**
  * This is the Designer-scope module hook. The minimal implementation contains a
@@ -40,12 +31,9 @@ public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleH
 				"example-components");
 	}
 
-	public ExampleComponentLibraryDesignerHook() {
-		log.trace("Registering Example Components in Designer!");
-	}
-
 	@Override
 	public void startup(DesignerContext context, LicenseState activationState) {
+		log.trace("Starting up Example Component Library Designer Hook");
 		this.context = context;
 		init();
 	}
@@ -58,7 +46,7 @@ public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleH
 		// Component icons are stored as svgs in `src/main/resources/`
 		final Icon componentIcon = IconUtilities.getSvgIcon("/img/button-click.svg");
 		
-		// In the common scope where our button is defined, we dont have access to the save `SvgIconUtil` library
+		// In the common scope where our button is defined, we don't have access to the save `SvgIconUtil` library
 		// so we get the icon here through an override on the Delegate, since we have client scope.
 		registry.registerComponent(new DelegatingComponentDescriptor(Button.DESCRIPTOR) {
 			@Override
@@ -71,6 +59,7 @@ public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleH
 
 	@Override
 	public void shutdown() {
+		log.trace("Shutting down Example Component Library Designer Hook");
 		removeComponents();
 	}
 
