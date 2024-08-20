@@ -1,6 +1,5 @@
 package dev.bwdesigngroup.perspective.examples.designer;
 
-import com.inductiveautomation.ignition.common.BundleUtil;
 import com.inductiveautomation.ignition.common.licensing.LicenseState;
 import com.inductiveautomation.ignition.common.util.LoggerEx;
 import com.inductiveautomation.ignition.designer.model.AbstractDesignerModuleHook;
@@ -11,8 +10,9 @@ import com.inductiveautomation.perspective.designer.api.PerspectiveDesignerInter
 import dev.bwdesigngroup.perspective.examples.common.components.input.Button;
 
 /**
- * This is the Designer-scope module hook. The minimal implementation contains a
- * startup method.
+ * Designer module hook for the Example Component Library.
+ * This class is responsible for initializing and managing the module's
+ * lifecycle in the Ignition Designer.
  */
 public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleHook {
 	private static final LoggerEx log = LoggerEx.newBuilder().build(ExampleComponentLibraryDesignerHook.class);
@@ -20,12 +20,12 @@ public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleH
 	private DesignerContext context;
 	private DesignerComponentRegistry registry;
 
-	static {
-		// This bundle is a direct reference to src/main/resources/example-components.properties
-		BundleUtil.get().addBundle("example-components", ExampleComponentLibraryDesignerHook.class.getClassLoader(),
-				"example-components");
-	}
-
+	/**
+	 * Initializes the module in the Designer scope.
+	 * 
+	 * @param context         The DesignerContext for this module.
+	 * @param activationState The current license state.
+	 */
 	@Override
 	public void startup(DesignerContext context, LicenseState activationState) {
 		log.trace("Starting up Example Component Library Designer Hook");
@@ -33,20 +33,30 @@ public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleH
 		init();
 	}
 
+	/**
+	 * Initializes the component registry and registers components.
+	 */
 	private void init() {
 		PerspectiveDesignerInterface pdi = PerspectiveDesignerInterface.get(context);
 
 		registry = pdi.getDesignerComponentRegistry();
 
+		// Each component must be registered, with an optional icon, to the component registry.
 		ComponentUtilities.registerComponentWithIcon(registry, Button.DESCRIPTOR, "/images/button-click.svg");
 	}
 
+	/**
+	 * Shuts down the module and unregisters components.
+	 */
 	@Override
 	public void shutdown() {
 		log.trace("Shutting down Example Component Library Designer Hook");
 		removeComponents();
 	}
 
+	/**
+	 * Removes registered components from the registry.
+	 */
 	private void removeComponents() {
 		registry.removeComponent(Button.COMPONENT_ID);
 	}

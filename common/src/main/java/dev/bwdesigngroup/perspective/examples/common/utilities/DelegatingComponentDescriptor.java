@@ -6,10 +6,6 @@
 */
 package dev.bwdesigngroup.perspective.examples.common.utilities;
 
-/**
- *
- * @author Keith Gamble
- */
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -17,7 +13,6 @@ import java.util.Set;
 import javax.swing.Icon;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 
 import com.inductiveautomation.ignition.common.gson.JsonObject;
 import com.inductiveautomation.ignition.common.jsonschema.JsonSchema;
@@ -27,12 +22,33 @@ import com.inductiveautomation.perspective.common.api.ComponentEventDescriptor;
 import com.inductiveautomation.perspective.common.api.ExtensionFunctionDescriptor;
 import com.inductiveautomation.perspective.common.api.PaletteEntry;
 
+/**
+ * DelegatingComponentDescriptor is an abstract class that implements the
+ * ComponentDescriptor interface.
+ * It uses the Delegation pattern to forward most method calls to an underlying
+ * ComponentDescriptor instance.
+ * This class allows for easy extension and customization of ComponentDescriptor
+ * behavior by overriding
+ * specific methods while delegating the rest to the original implementation.
+ *
+ * @author Keith Gamble
+ */
 public abstract class DelegatingComponentDescriptor implements ComponentDescriptor {
+	/** The underlying ComponentDescriptor to which most calls are delegated. */
 	private final ComponentDescriptor delegate;
 
+	/**
+	 * Constructs a new DelegatingComponentDescriptor.
+	 *
+	 * @param delegate The ComponentDescriptor to which calls will be delegated.
+	 */
 	public DelegatingComponentDescriptor(ComponentDescriptor delegate) {
 		this.delegate = delegate;
 	}
+
+	// The following methods all delegate to the underlying ComponentDescriptor.
+	// Each method is annotated with @Override to ensure it correctly implements
+	// the ComponentDescriptor interface.
 
 	@Override
 	@Nonnull

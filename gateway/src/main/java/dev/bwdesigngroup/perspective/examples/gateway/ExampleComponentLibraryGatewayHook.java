@@ -13,8 +13,9 @@ import dev.bwdesigngroup.perspective.examples.common.Constants;
 import dev.bwdesigngroup.perspective.examples.common.components.input.Button;
 
 /**
- * Class which is instantiated by the Ignition platform when the module is
- * loaded in the gateway scope.
+ * Gateway module hook for the Example Component Library.
+ * This class is responsible for initializing and managing the module's
+ * lifecycle in the Ignition Gateway.
  */
 public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHook {
 
@@ -25,11 +26,10 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 	private ComponentRegistry componentRegistry;
 
 	/**
-	 * Called to before startup. This is the chance for the module to add its
-	 * extension points and update persistent
-	 * records and schemas. None of the managers will be started up at this point,
-	 * but the extension point managers will
-	 * accept extension point types.
+	 * Called before startup. This is where we can add extension points and update
+	 * persistent records and schemas.
+	 * 
+	 * @param context The GatewayContext for this module.
 	 */
 	@Override
 	public void setup(GatewayContext context) {
@@ -37,9 +37,9 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 	}
 
 	/**
-	 * Called to initialize the module. Will only be called once. Persistence
-	 * interface is available, but only in
-	 * read-only mode.
+	 * Initializes the module. Called once during startup.
+	 * 
+	 * @param activationState The current license state.
 	 */
 	@Override
 	public void startup(LicenseState activationState) {
@@ -54,9 +54,7 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 	}
 
 	/**
-	 * Called to shutdown this module. Note that this instance will never be started
-	 * back up - a new one will be created
-	 * if a restart is desired
+	 * Shuts down the module and unregisters components.
 	 */
 	@Override
 	public void shutdown() {
@@ -69,9 +67,7 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 	}
 
 	/**
-	 * @return the path to a folder in one of the module's gateway jar files that
-	 *         should be mounted at
-	 *         /res/module-id/foldername
+	 * @return The path to the mounted resource folder.
 	 */
 	@Override
 	public Optional<String> getMountedResourceFolder() {
@@ -79,9 +75,7 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 	}
 
 	/**
-	 * Used by the mounting underneath /res/module-id/* and /main/data/module-id/*
-	 * as an alternate mounting path instead
-	 * of your module id, if present.
+	 * @return The alias for the module's mount path.
 	 */
 	@Override
 	public Optional<String> getMountPathAlias() {
@@ -89,10 +83,7 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 	}
 
 	/**
-	 * @return {@code true} if this is a "free" module, i.e. it does not participate
-	 *         in the licensing system. This is
-	 *         equivalent to the now defunct FreeModule attribute that could be
-	 *         specified in module.xml.
+	 * @return true if this is a free module (doesn't require licensing).
 	 */
 	@Override
 	public boolean isFreeModule() {

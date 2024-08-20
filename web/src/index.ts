@@ -1,15 +1,16 @@
 import { ComponentMeta, ComponentRegistry } from '@inductiveautomation/perspective-client';
 import { Button, ButtonMeta } from './components/Button';
 
-// export so the components are referencable, e.g. `RadComponents['Image']
+// Export components for external reference
 export { Button };
 
+// Import component styles
 import './css/styles.css';
 
-// as new components are implemented, import them, and add their meta to this array
+// Array of component metadata
 const components: Array<ComponentMeta> = [
 	new ButtonMeta(),
 ];
 
-// iterate through our components, registering each one with the registry.  Don't forget to register on the Java side too!
+// Register each component with the Perspective ComponentRegistry
 components.forEach((c: ComponentMeta) => ComponentRegistry.register(c));

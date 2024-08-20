@@ -1,34 +1,38 @@
+/* Styles for the example button component */
+
 .dg-example-button {
-    font-size: 0.875rem;
-    font-weight: 700;
-    border-radius: var(--borderRadius);
-    -webkit-border-radius: var(--borderRadius);
-    cursor: pointer;
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
-    transition-property: box-shadow, background-color;
+	font-size: 0.875rem;
+	font-weight: 700;
+	border-radius: var(--borderRadius);
+	-webkit-border-radius: var(--borderRadius);
+	cursor: pointer;
+	-webkit-transition-duration: 0.1s;
+	transition-duration: 0.1s;
+	transition-property: box-shadow, background-color;
 }
 
+/* Hover effect for enabled buttons */
 .dg-example-button:enabled:hover {
-    box-shadow: var(--boxShadow2);
+	box-shadow: var(--boxShadow2);
 }
 
-/* Primary button */
-
+/* Primary button style */
 .dg-example-button {
-    background-color: peachpuff;
-    border: var(--containerBorder);
-    color: black;
+	background-color: peachpuff;
+	border: var(--containerBorder);
+	color: black;
 }
 
+/* Active state for enabled buttons */
 .dg-example-button:enabled:active {
-    box-shadow: var(--boxShadow--inset);
-    border: none;
+	box-shadow: var(--boxShadow--inset);
+	border: none;
 }
 
+/* Disabled button style */
 .dg-example-button:disabled {
-    background-color: var(--callToAction--disabled);
-    border: var(--border--disabled);
-    color: var(--neutral-30);
-    cursor: not-allowed;
+	background-color: var(--callToAction--disabled);
+	border: var(--border--disabled);
+	color: var(--neutral-30);
+	cursor: not-allowed;
 }

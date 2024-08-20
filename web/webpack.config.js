@@ -4,6 +4,10 @@ const fs = require('fs');
 
 const LibName = "ExampleComponents";
 
+/**
+ * Custom function to copy built files to the Gradle resources directory.
+ * This ensures that the compiled JS and CSS are available to the Java module.
+ */
 function copyToResources(compilation, callback) {
 	const generatedResourcesDir = path.resolve(__dirname, 'build/generated-resources/mounted/');
 	const jsToCopy = path.resolve(__dirname, "dist", `${LibName}.js`);
@@ -38,6 +42,7 @@ function copyToResources(compilation, callback) {
 	callback();
 }
 
+// Webpack configuration
 module.exports = {
 	entry: './src/index.ts',
 	output: {

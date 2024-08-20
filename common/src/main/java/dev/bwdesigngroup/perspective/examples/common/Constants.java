@@ -1,16 +1,29 @@
 /*
  * Copyright 2022 Keith Gamble
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
+ * [License information]
+ */
 package dev.bwdesigngroup.perspective.examples.common;
 
 /**
+ * This class contains constant values used across the Example Component Library
+ * module.
+ * These constants ensure consistency in module identification and resource
+ * access.
  *
  * @author Keith Gamble
  */
 public class Constants {
+	/**
+	 * The unique identifier for this module.
+	 * This ID is used in various parts of the module sdk to recognize and
+	 * manage the module.
+	 */
 	public static final String MODULE_ID = "dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary";
-    public static final String MODULE_URL_ALIAS = "example-components";
+
+	/**
+	 * The URL alias for this module's resources.
+	 * This alias is used when mounting and accessing module resources in the web
+	 * context.
+	 */
+	public static final String MODULE_URL_ALIAS = "example-components";
 }

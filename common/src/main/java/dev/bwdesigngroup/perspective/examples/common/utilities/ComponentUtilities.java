@@ -1,24 +1,27 @@
 /*
  * Copyright 2022 Keith Gamble
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
+ * [License information]
+ */
 package dev.bwdesigngroup.perspective.examples.common.utilities;
-
-import org.apache.poi.ss.formula.functions.T;
 
 import com.inductiveautomation.ignition.common.jsonschema.JsonSchema;
 import com.inductiveautomation.perspective.common.api.ComponentEventDescriptor;
 
 /**
+ * Utility class providing helper methods for component-related operations.
  *
  * @author Keith Gamble
  */
 public class ComponentUtilities {
-	public static JsonSchema getSchemaFromFilePath(String resourcePath) {
-		// If there is already a / in the resourcePath, then don't add another one.
 
+	/**
+	 * Loads and parses a JSON schema from a given resource path.
+	 *
+	 * @param resourcePath The path to the JSON schema resource.
+	 * @return A JsonSchema object representing the parsed schema.
+	 */
+	public static JsonSchema getSchemaFromFilePath(String resourcePath) {
+		// Ensure the resource path starts with a forward slash
 		if (!resourcePath.startsWith("/")) {
 			resourcePath = "/" + resourcePath;
 		}
@@ -26,13 +29,25 @@ public class ComponentUtilities {
 		return JsonSchema.parse(ComponentUtilities.class.getResourceAsStream(resourcePath));
 	}
 
+	/**
+	 * Inner class representing a dynamic ComponentEventDescriptor.
+	 * This allows for creation of event descriptors with schemas loaded from files.
+	 */
 	private static class DynamicEventDescriptor extends ComponentEventDescriptor {
 		public DynamicEventDescriptor(String filePath, String eventName, String description) {
 			super(eventName, description, ComponentUtilities.getSchemaFromFilePath(filePath));
 		}
 	}
 
-    public static DynamicEventDescriptor getEventDescriptor(String filePath, String eventName, String description) {
-        return new DynamicEventDescriptor(filePath, eventName, description);
-    }
+	/**
+	 * Creates a ComponentEventDescriptor with a schema loaded from a file.
+	 *
+	 * @param filePath    The path to the JSON schema file for the event.
+	 * @param eventName   The name of the event.
+	 * @param description A description of the event.
+	 * @return A ComponentEventDescriptor for the specified event.
+	 */
+	public static DynamicEventDescriptor getEventDescriptor(String filePath, String eventName, String description) {
+		return new DynamicEventDescriptor(filePath, eventName, description);
+	}
 }

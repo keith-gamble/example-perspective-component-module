@@ -10,27 +10,58 @@ import javax.swing.Icon;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 
+import com.inductiveautomation.ignition.common.util.LoggerEx;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
 
 import dev.bwdesigngroup.perspective.examples.common.utilities.DelegatingComponentDescriptor;
 
-
 /**
- *
+ * Utility class for registering components with custom icons in the Ignition Designer.
+ * 
  * @author Keith Gamble
  */
 public class ComponentUtilities {
-	
-	public static void registerComponentWithIcon(DesignerComponentRegistry registry, ComponentDescriptor descriptor, String iconFilePath) {
-		final Icon icon = IconUtilities.getSvgIcon(iconFilePath);
-		
-		registry.registerComponent(new DelegatingComponentDescriptor(descriptor) {
-			@Override
-			@Nonnull
-			public Optional<Icon> getIcon() {
-				return Optional.of(icon);
-			}
-		});
-	}
+    
+    private static final LoggerEx logger = LoggerEx.newBuilder().build(ComponentUtilities.class);
+    
+    /**
+     * Registers a component with a custom SVG icon in the Designer component registry.
+     * 
+     * We use Designer-scoped SVG functions because:
+     * 1. The Designer scope already has the SvgIconUtil class available for loading SVG icons.
+     * 
+     * We use a DelegatingComponentDescriptor because:
+     * 1. It allows us to override only the getIcon() method while keeping all other descriptor behaviors intact.
+     * 2. This approach avoids the need to implement all methods of ComponentDescriptor, reducing code duplication.
+     * 3. It provides a flexible way to customize component representation in the Designer without modifying the original descriptor.
+     * 
+     * @param registry The DesignerComponentRegistry to register the component with.
+     * @param descriptor The original ComponentDescriptor of the component.
+     * @param iconFilePath The file path of the SVG icon to be used for the component.
+     */
+    public static void registerComponentWithIcon(DesignerComponentRegistry registry, ComponentDescriptor descriptor, String iconFilePath) {
+        Icon icon = null;
+        try {
+            icon = IconUtilities.getSvgIcon(iconFilePath);
+        } catch (Exception e) {
+            logger.error("Failed to load icon from path: " + iconFilePath, e);
+        }
+
+        final Icon finalIcon = icon;  // Need a final reference for use in the anonymous class
+
+        registry.registerComponent(new DelegatingComponentDescriptor(descriptor) {
+            @Override
+            @Nonnull
+            public Optional<Icon> getIcon() {
+                return Optional.ofNullable(finalIcon);
+            }
+        });
+
+        if (finalIcon == null) {
+            logger.warn("Component " + descriptor.id() + " registered without an icon due to loading failure.");
+        } else {
+            logger.trace("Component " + descriptor.id() + " registered successfully with custom icon.");
+        }
+    }
 }
