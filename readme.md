@@ -41,8 +41,8 @@ Currently, this project includes one example component:
 
 2. Clone the repository:
    ```
-   git clone https://github.com/yourusername/example-component-library.git
-   cd example-component-library
+   git clone https://github.com/design-group/example-perspective-component-module.git
+   cd example-perspective-component-module
    ```
 
 3. Build the web components to confirm you have the necessary tools and dependencies:
