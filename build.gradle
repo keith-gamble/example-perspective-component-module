@@ -17,7 +17,7 @@ ignitionModule {
     moduleVersion = version
     license = "LICENSE.txt"
     moduleDescription = "A module that adds Example React components to Perspective."
-    requiredIgnitionVersion = "8.0.10"
+    requiredIgnitionVersion = "8.1.0"
 
     projectScopes = [
         ":gateway": "G",

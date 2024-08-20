@@ -7,7 +7,8 @@ targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
     api(project(":common"))
-	// This is required to get the :web project .jar added into the modl
+	
+	// This is required to get the :web project .jar added into the modl file
     modlImplementation(project(":web"))
 
     compileOnly("com.inductiveautomation.ignitionsdk:ignition-common:${sdk_version}")
