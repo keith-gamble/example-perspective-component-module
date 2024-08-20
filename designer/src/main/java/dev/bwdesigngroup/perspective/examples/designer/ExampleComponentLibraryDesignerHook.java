@@ -1,9 +1,5 @@
 package dev.bwdesigngroup.perspective.examples.designer;
 
-import javax.swing.Icon;
-import java.util.Optional;
-import javax.annotation.Nonnull;
-
 import com.inductiveautomation.ignition.common.BundleUtil;
 import com.inductiveautomation.ignition.common.licensing.LicenseState;
 import com.inductiveautomation.ignition.common.util.LoggerEx;
@@ -12,8 +8,7 @@ import com.inductiveautomation.ignition.designer.model.DesignerContext;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
 import com.inductiveautomation.perspective.designer.api.PerspectiveDesignerInterface;
 
-import dev.bwdesigngroup.perspective.examples.common.DelegatingComponentDescriptor;
-import dev.bwdesigngroup.perspective.examples.common.component.input.Button;
+import dev.bwdesigngroup.perspective.examples.common.components.input.Button;
 
 /**
  * This is the Designer-scope module hook. The minimal implementation contains a
@@ -43,18 +38,7 @@ public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleH
 
 		registry = pdi.getDesignerComponentRegistry();
 
-		// Component icons are stored as svgs in `src/main/resources/`
-		final Icon componentIcon = IconUtilities.getSvgIcon("/img/button-click.svg");
-		
-		// In the common scope where our button is defined, we don't have access to the save `SvgIconUtil` library
-		// so we get the icon here through an override on the Delegate, since we have client scope.
-		registry.registerComponent(new DelegatingComponentDescriptor(Button.DESCRIPTOR) {
-			@Override
-			@Nonnull
-			public Optional<Icon> getIcon() {
-				return Optional.of(componentIcon);
-			}
-		});
+		ComponentUtilities.registerComponentWithIcon(registry, Button.DESCRIPTOR, "/images/button-click.svg");
 	}
 
 	@Override

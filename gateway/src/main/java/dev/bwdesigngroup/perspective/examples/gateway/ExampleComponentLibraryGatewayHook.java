@@ -10,7 +10,7 @@ import com.inductiveautomation.perspective.common.api.ComponentRegistry;
 import com.inductiveautomation.perspective.gateway.api.PerspectiveContext;
 
 import dev.bwdesigngroup.perspective.examples.common.Constants;
-import dev.bwdesigngroup.perspective.examples.common.component.input.Button;
+import dev.bwdesigngroup.perspective.examples.common.components.input.Button;
 
 /**
  * Class which is instantiated by the Ignition platform when the module is
