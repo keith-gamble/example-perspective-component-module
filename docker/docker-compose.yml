@@ -1,8 +1,6 @@
 services:
   gateway:
     image: bwdesigngroup/ignition-docker:8.1.37
-    # ports:
-    #   - 8088:8088
     environment:
       DEVELOPER_MODE: Y
       SYMLINK_GITIGNORE: false
@@ -14,7 +12,6 @@ services:
     volumes:
       - ../build/Example-Component-Library.modl:/modules/Example-Component-Library.modl
       - ./backups/gateway.gwbk:/restore.gwbk
-      - ./temp/ignition-data:/workdir
     labels:
       traefik.enable: "true"
       traefik.hostname: "perspective-component"
