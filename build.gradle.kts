@@ -13,7 +13,7 @@ ignitionModule {
     moduleVersion.set("${project.version}")
     license.set("LICENSE.txt")
     moduleDescription.set("A module that adds Example React components to Perspective.")
-    requiredIgnitionVersion.set("8.1.0")
+    requiredIgnitionVersion.set("8.1.36")
 
     projectScopes.putAll(
         mapOf(
