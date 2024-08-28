@@ -40,6 +40,7 @@ export interface MyNewComponentProps {
 export class MyNewComponent extends Component<ComponentProps<MyNewComponentProps>, any> {
 	// The render function is where the component's UI is defined. It will be re-rendered whenever the component's properties change.
     render() {
+		// Pull any necessary properties from the props object so that you can use them in the component
         const { props: { text }, emit } = this.props;
         return <div {...emit()}>{text}</div>;
     }
