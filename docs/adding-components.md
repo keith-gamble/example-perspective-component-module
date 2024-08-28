@@ -65,6 +65,27 @@ export class MyNewComponentMeta implements ComponentMeta {
 }
 ```
 
+To update update your component properties from within the component itself, you can use the following method on the ComponentProps object:
+
+```ts
+// If we want to disable our button when we click it
+disableOnClick = () => {
+	// Write to the props store to update the component's properties
+	this.props.store.props.write('disabled', true);
+}
+
+// Add the reference to the function in the render method
+render() {
+	// Make sure to pull the new prop from the props object, to update our component when the prop changes
+	const { props: { text, disabled }, emit } = this.props;
+	return <div 
+			{...emit()}
+			onClick={this.disableOnClick} 
+			disabled={disabled}
+		   >{text}</div>;
+}
+```
+
 ### 1.2 Update the Index File
 
 Add your new component to `web/src/index.ts`:
