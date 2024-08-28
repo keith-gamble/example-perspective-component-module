@@ -20,20 +20,63 @@ Gradle is the build automation tool used in this project. It manages dependencie
 
 The main Gradle files in the project are:
 
-- `build.gradle`: The root project build file, this defines the Ignition module details that will be created, and the included subprojects
-- `settings.gradle`: Defines the project structure and links to the IA module building plugin
+- `build.gradle.kts`: The root project build file, this defines the Ignition module details that will be created, and the included subprojects
+- `settings.gradle.kts`: Defines the project structure and links to the IA module building plugin
 - `gradle.properties`: Contains project-wide properties
-- `common/build.gradle`, `designer/build.gradle`, `gateway/build.gradle`, `web/build.gradle`: Subproject-specific build files
+- `common/build.gradle.kts`, `designer/build.gradle.kts`, `gateway/build.gradle.kts`, `web/build.gradle.kts`: Subproject-specific build files
 
 The repository comes with a `gradle.properties.template` that can be used to create a `gradle.properties` file with the necessary properties for the project. Helpful comments are included to explain the purpose of each property.
 
+## Version Catalog and Dependency Management
+
+This project uses Gradle's version catalog feature, which is defined in the `gradle/libs.versions.toml` file. This file centrally manages dependencies and their versions across the entire project.
+
+### libs.versions.toml
+
+The `libs.versions.toml` file is structured as follows:
+
+```toml
+[versions]
+# Versions of dependencies are defined here
+ignition = "8.1.34"
+guava = "31.1-jre"
+
+[libraries]
+# Libraries are defined here, referencing the versions above
+ignition-common = { module = "com.inductiveautomation.ignitionsdk:ignition-common", version.ref = "ignition" }
+ignition-designer-api = { module = "com.inductiveautomation.ignitionsdk:designer-api", version.ref = "ignition" }
+ignition-perspective-common = { module = "com.inductiveautomation.ignitionsdk:perspective-common", version.ref = "ignition" }
+ignition-perspective-gateway = { module = "com.inductiveautomation.ignitionsdk:perspective-gateway", version.ref = "ignition" }
+ignition-perspective-designer = { module = "com.inductiveautomation.ignitionsdk:perspective-designer", version.ref = "ignition" }
+google-guava = { module = "com.google.guava:guava", version.ref = "guava" }
+
+[plugins]
+# Plugins can also be defined here if needed
+```
+
+This file is typically created and maintained manually. It allows for easy updating of dependency versions across the entire project.
+
+### Using the Version Catalog
+
+In the build.gradle.kts files, dependencies from the version catalog are referenced using the libs accessor:
+
+```kotlin
+dependencies {
+    compileOnly(libs.ignition.common)
+    compileOnly(libs.ignition.perspective.common)
+    compileOnly(libs.google.guava)
+}
+```
+
+This approach centralizes dependency management and makes it easier to maintain consistent versions across modules.
+
 ### Ignition Module Plugin
 
-The Ignition Module Plugin is a custom Gradle plugin that provides tasks specific to building Ignition modules. It's applied in the root `build.gradle` file:
+The Ignition Module Plugin is a custom Gradle plugin that provides tasks specific to building Ignition modules. It's applied in the root `build.gradle.kts` file:
 
-```groovy
+```kotlin
 plugins {
-    id("io.ia.sdk.modl") version "0.3.0"
+    id("io.ia.sdk.modl") version("0.3.0")
 }
 ```
 
@@ -54,15 +97,15 @@ The project is structured into several subprojects, which are not specifically n
 
 ### Subproject Dependencies
 
-The dependencies between subprojects are defined in their respective `build.gradle` files. For example, in `gateway/build.gradle`:
+The dependencies between subprojects are defined in their respective `build.gradle.kts` files. For example, in `gateway/build.gradle.kts`:
 
-```groovy
+```kotlin
 dependencies {
 	// This allows the code built in the :common project to be used in the :gateway project
-    api(project(":common"))
+    api(projects.common)
 	
 	// This is required to get the :web project .jar added into the modl file
-    modlImplementation(project(":web"))
+    modlImplementation(projects.web)
 
     // Other dependencies...
 }
@@ -89,16 +132,17 @@ This specifies that the compiled JavaScript should be output to the `dist` direc
 
 ### Gradle Integration
 
-The `web/build.gradle` file includes tasks to run npm and Webpack:
+The `web/build.gradle.kts` file includes tasks to run npm and Webpack:
 
-```groovy
-task installDependencies(type: NpmTask) {
-    args = ['install']
+```kotlin
+val installDependencies by tasks.registering(NpmTask::class) {
+    args.set(listOf("install"))
 }
 
-task webpack(type: NpmTask) {
-    args = ['run', 'build']
-    dependsOn installDependencies
+val webpack by tasks.registering(NpmTask::class) {
+    args.set(listOf("run", "build"))
+
+    dependsOn(installDependencies)
     
     inputs.files(project.fileTree(".").matching {
         exclude("**/node_modules/**", "**/dist/**", "**/.awcache/**", "**/yarn-error.log")
@@ -110,9 +154,9 @@ task webpack(type: NpmTask) {
 
 These tasks are made dependencies of the `:gateway` project's `build` task through the `processResources` task:
 
-```groovy
-project(':gateway')?.tasks?.named('processResources')?.configure {
-    dependsOn webpack
+```kotlin
+project(":gateway")?.tasks?.named("processResources")?.configure {
+    dependsOn(webpack)
 }
 ```
 
@@ -120,11 +164,10 @@ project(':gateway')?.tasks?.named('processResources')?.configure {
 
 After the web resources are built, they need to be copied to a location where the `:gateway` project can find them. This is handled by setting out `output` directory in the `webpack` task.
 
-```groovy
+```kotlin
 
-task webpack(type: NpmTask) {
+val webpack by tasks.registering(NpmTask::class) {
     // Build the files here
-
 
     outputs.files(fileTree(projectOutput))
 }

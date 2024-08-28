@@ -14,9 +14,9 @@ The project is organized into several key directories:
 
 ### Key Files
 
-- `build.gradle`: Main Gradle build file
-- `settings.gradle`: Gradle settings file
-- `common/build.gradle`, `designer/build.gradle`, `gateway/build.gradle`, `web/build.gradle`: Subproject-specific build files
+- `build.gradle.kts`: Main Gradle build file
+- `settings.gradle.kts`: Gradle settings file
+- `common/build.gradle.kts`, `designer/build.gradle.kts`, `gateway/build.gradle.kts`, `web/build.gradle.kts`: Subproject-specific build files
 - `web/package.json`: npm dependencies and scripts for the web components
 - `web/webpack.config.js`: Webpack configuration for building the web components
 - `web/tsconfig.json`: TypeScript configuration

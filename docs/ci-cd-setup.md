@@ -201,7 +201,7 @@ After creating your KeyStore and certificate, encode them for use in GitHub secr
 3. Check the workflow results to ensure the build is successful
 
 ### For Releases:
-1. Update the version number in your `build.gradle` file
+1. Update the version number in your `build.gradle.kts` file
 2. Commit and push your changes
 3. Create and push a new tag matching the pattern `[0-9].[0-9].[0-9]`, e.g.:
    ```

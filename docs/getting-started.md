@@ -77,6 +77,26 @@ Our project is structured as follows:
 - `gateway/`: Gateway-specific code
 - `web/`: Frontend React components and build configuration
 - `docker/`: Docker-related files for development and testing
+- `gradle/`: Contains the `libs.versions.toml` file for centralized dependency management
+
+### Gradle Build Scripts
+
+This project uses Kotlin DSL for Gradle build scripts. You'll find `build.gradle.kts` files instead of `build.gradle` files. Kotlin DSL provides better IDE support, type safety, and consistency with Kotlin projects.
+
+Key Gradle files:
+- `build.gradle.kts`: Root project build file
+- `settings.gradle.kts`: Defines the project structure and includes subprojects
+- `gradle.properties`: Contains project-wide properties
+- `gradle/libs.versions.toml`: Centralizes dependency management (version catalog)
+
+## Understanding the Technologies
+
+If you're new to any of the technologies we're using, here are some great resources to get you started:
+
+### Kotlin DSL for Gradle
+- [Gradle Kotlin DSL Primer](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+- [Migrating build logic from Groovy to Kotlin](https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html)
+- [Gradle-VS-Kotlin](./faq/gradle-vs-kotlin.md)
 
 ## Building the Module
 
