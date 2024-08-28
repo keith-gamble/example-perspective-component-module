@@ -25,6 +25,8 @@ The main Gradle files in the project are:
 - `gradle.properties`: Contains project-wide properties
 - `common/build.gradle`, `designer/build.gradle`, `gateway/build.gradle`, `web/build.gradle`: Subproject-specific build files
 
+The repository comes with a `gradle.properties.template` that can be used to create a `gradle.properties` file with the necessary properties for the project. Helpful comments are included to explain the purpose of each property.
+
 ### Ignition Module Plugin
 
 The Ignition Module Plugin is a custom Gradle plugin that provides tasks specific to building Ignition modules. It's applied in the root `build.gradle` file:

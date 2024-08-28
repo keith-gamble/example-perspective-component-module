@@ -104,12 +104,15 @@ import dev.bwdesigngroup.perspective.examples.common.ExampleComponents;
 public class MyNewComponent {
 	// This should match the ID used in the TypeScript component class
     public static final String COMPONENT_ID = "examples.mynewcomponent";
+	public static final String COMPONENT_NAME = "My New Component";
+	public static final String COMPONENT_DESCRIPTION = "A new component for the Example Component Library";
 
     public static ComponentDescriptor DESCRIPTOR = ComponentDescriptorImpl.ComponentBuilder.newBuilder()
         .setPaletteCategory(ExampleComponents.COMPONENT_CATEGORY)
         .setId(COMPONENT_ID)
         .setModuleId(Constants.MODULE_ID)
         .setSchema(ComponentUtilities.getSchemaFromFilePath("/props/mynewcomponent.props.json"))
+		.addPaletteEntry("", COMPONENT_NAME, COMPONENT_DESCRIPTION, null, null)
         .setName("My New Component")
         .setDefaultMetaName("myNewComponent")
         .setResources(ExampleComponents.BROWSER_RESOURCES)
