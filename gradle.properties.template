@@ -1,7 +1,7 @@
 # If you dont have a certificate to use, you can set the following to false
 signModule=true
 
-# If you do have a certificate and keystore, then fill out the following.
+# If you do have a certificate and keystore, then fill out the following, else feel free to remove them.
 ignition.signing.keystoreFile=/path/to/keystore.jks
 ignition.signing.keystorePassword=keystorePassword
 ignition.signing.certFile=/path/to/code-signing.chain.crt
