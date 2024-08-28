@@ -96,7 +96,7 @@ If you're new to any of the technologies we're using, here are some great resour
 ### Kotlin DSL for Gradle
 - [Gradle Kotlin DSL Primer](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - [Migrating build logic from Groovy to Kotlin](https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html)
-- [Gradle-VS-Kotlin](./faq/gradle-vs-kotlin.md)
+- [Gradle-VS-Kotlin](./faq/groovy-vs-kotlin.md)
 
 ## Building the Module
 
