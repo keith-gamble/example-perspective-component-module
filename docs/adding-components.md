@@ -261,13 +261,22 @@ After adding all the necessary files and registering your component:
 
 4. Try dragging your component onto a view and configuring its properties.
 
+## Refreshing your Designer with new web changes
+
+If you make changes to the web portion of your component, there is no need to restart the designer to see those changes. To refresh the Designer, do the following:
+
+1. Launch the Dev Tools (AKA, the External Debugger) by selecting `Tools > Launch Perspective... > External Debugger` in the menu bar.
+
+2. Press Cmd+R (Mac) or Ctrl+R (Windows) to refresh the designer, just like you would in a web browser.
+
 ## Best Practices
 
 1. Keep your component ID unique and consistent across all files.
-2. Follow the existing naming conventions in the project.
-3. Always update both the Gateway and Designer hooks when adding or removing components.
-4. Test your component thoroughly in different scenarios.
-5. Update any relevant documentation or README files to include information about your new component.
+2. Using a Perspective Session, looking at an individual view with just your component in it can be a good way to test your component without worrying about designer restarts, etc.
+3. Follow the existing naming conventions in the project.
+4. Always update both the Gateway and Designer hooks when adding or removing components.
+5. Test your component thoroughly in different scenarios.
+6. Update any relevant documentation or README files to include information about your new component.
 
 ## Troubleshooting
 
