@@ -35,3 +35,6 @@ gradle.properties
 __pycache__/
 .pytest_cache/
 out/
+
+# IntelliJ IDEA files
+.idea/
