@@ -138,8 +138,8 @@ plugins {
     id "java-library"
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
 	compileOnly("com.inductiveautomation.ignitionsdk:ignition-common:${sdk_version}")
@@ -156,8 +156,8 @@ plugins {
     id "java-library"
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
 	api(project(":common"))
@@ -178,8 +178,8 @@ plugins {
     id "java-library"
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
     api(project(":common"))
@@ -201,8 +201,8 @@ plugins {
     id 'com.github.node-gradle.node' version '3.2.1'
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 def projectOutput = "$buildDir/generated-resources/"
 

@@ -29,7 +29,7 @@ Currently, this project includes one example component:
 
 ## Tools and Technologies
 
-- Java 17
+- Java 11
 - Gradle for building the module
 - npm and Webpack for managing and building web components
 - TypeScript for type-safe JavaScript development
@@ -37,7 +37,7 @@ Currently, this project includes one example component:
 
 ## Building the Project
 
-1. Ensure you have Java 17, Gradle, and Node.js installed.
+1. Ensure you have Java 11, Gradle, and Node.js installed.
 
 2. Clone the repository:
    ```

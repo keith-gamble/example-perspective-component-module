@@ -34,7 +34,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: 17
+          java-version: 11
           cache: 'gradle'
       - name: Build
         run: ./gradlew build
@@ -48,7 +48,7 @@ jobs:
 ### What it does:
 
 1. Checks out the code
-2. Sets up Java 17 (Zulu distribution)
+2. Sets up Java 11 (Zulu distribution)
 3. Builds the project using Gradle
 4. Uploads the unsigned `.modl` file as an artifact
 
