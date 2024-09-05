@@ -1,5 +1,5 @@
 [versions]
-    ignition = "8.1.36"
+    ignition = "8.1.32"
 
 [libraries]
     # Dependencies provided by the Ignition SDK, they all reference the 'ignition' version

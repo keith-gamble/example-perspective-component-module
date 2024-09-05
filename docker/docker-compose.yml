@@ -1,6 +1,6 @@
 services:
   gateway:
-    image: bwdesigngroup/ignition-docker:8.1.37
+    image: ghcr.io/design-group/ignition-docker-new:8.1.32
     environment:
       DEVELOPER_MODE: Y
       SYMLINK_GITIGNORE: false
@@ -12,11 +12,14 @@ services:
     volumes:
       - ../build/Example-Component-Library.modl:/modules/Example-Component-Library.modl
       - ./backups/gateway.gwbk:/restore.gwbk
+      - ../web:/web-resources
     labels:
       traefik.enable: "true"
       traefik.hostname: "perspective-component"
     command: >
       -r /restore.gwbk
+      --
+      -Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
     networks:
       - default
       - proxy

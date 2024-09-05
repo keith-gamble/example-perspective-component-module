@@ -73,6 +73,36 @@ sdk install gradle 7.6
 4. The module will be installed, but not accepted by default. You must go to the modules configuration page in the Gateway webpage and accept the license.
 5. After accepting the license, take a new backup and replace the one in `docker/backups` so that its auto-accepted in the future.
 
+### 7. Unsecure Designer Login
+
+It is possible to auto-login to the designer for testing purposes, however it is noted that this is not secure and should not be used in a production environment. To enable this, add the following JVM args to your designer launcher config for this gateway:
+
+```sh
+-Dautologin.username=some_username;
+-Dautologin.password=some_password;
+-Djavaws.ignition.loglevel=INFO;
+-Djavaws.ignition.debug=true;
+-Dproject.name=some_project_name;
+```
+
+### 8. Mapping Files into the Gateway for Development
+
+It is possible to map your built js files into the gateway, so that you dont need to keep rebuilding the module every time you make a change. To do this, the following mounts, and JVM args have been added to the `docker/docker-compose.yml` file:
+
+#### `docker/docker-compose.yml`
+```yml
+	volumes:
+	  - ../web:/web-resources
+	# ... other volumes
+
+	commands: 
+	# ... other commands
+	--
+	-Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
+```
+
+The reason that this is mounted at the `./web` level, instead of all the way down to the mounted content, is because when the webpack copy happens if you do a `clean` first it will delete the `build` directory inside of `./web` which will throw off permissions on the finally created content. This just makes it easier to ensure that you have consistent permissions the whole time.
+
 ## Verification
 
 To verify your setup:
