@@ -207,7 +207,7 @@ This task uses the `gateway` properties defined in `gradle.properties` to connec
 
 - If the module fails to load in Ignition, check the Gateway logs for detailed error messages
 - For web component issues, check the browser console and the compiled JavaScript in the `.modl` file
-- If the module fails to deploy to the gateway with the following error, you may need to add your CA Certs to your java keystore: `sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target`
+- If the module fails to deploy to the gateway with the following error, you may need to add your CA Certs to your java keystore: `sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target`. This error is because the certificate authority that you used to define your certs isnt trusted by default in Java. To fix the error, adding the CA cert and intermediates to your java keystore will allow the module to deploy.
 
 Example Commands to add your CA Certs to your java keystore:
 ```

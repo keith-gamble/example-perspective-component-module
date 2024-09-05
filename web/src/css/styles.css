@@ -18,7 +18,7 @@
 
 /* Primary button style */
 .dg-example-button {
-	background-color: peachpuff;
+	background-color: orange;
 	border: var(--containerBorder);
 	color: black;
 }
