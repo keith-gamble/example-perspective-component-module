@@ -5,6 +5,7 @@
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
 	"scripts": {
+		"watch": "webpack --mode development --watch",
 		"clean": "rimraf dist build",
 		"build": "npm run clean && webpack --mode production"
 	},
