@@ -1,6 +1,6 @@
 services:
   gateway:
-    image: ghcr.io/design-group/ignition-docker-new:8.1.32
+    image: design-group/ignition-docker:8.1.32
     environment:
       DEVELOPER_MODE: Y
       SYMLINK_GITIGNORE: false
