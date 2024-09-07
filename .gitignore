@@ -38,3 +38,6 @@ out/
 
 # IntelliJ IDEA files
 .idea/
+
+# Environment specific values
+.env

@@ -1,25 +1,28 @@
 services:
   gateway:
-    image: design-group/ignition-docker:8.1.32
+    image: inductiveautomation/ignition:8.1.32
     environment:
-      DEVELOPER_MODE: Y
-      SYMLINK_GITIGNORE: false
-      SYMLINK_THEMES: false
-      SYMLINK_LOGBACK: false
-      GATEWAY_SYSTEM_NAME: perspective-component-gateway
-      GATEWAY_PUBLIC_HTTPS_PORT: 443
-      GATEWAY_PUBLIC_ADDRESS: perspective-component.localtest.me
+      ACCEPT_IGNITION_EULA: Y
+      GATEWAY_ADMIN_USERNAME: ${GATEWAY_USERNAME:-admin}
+      GATEWAY_ADMIN_PASSWORD: ${GATEWAY_PASSWORD:-password}
+      GATEWAY_MODULES_ENABLED: perspective
+      DISABLE_QUICKSTART: true
     volumes:
-      - ../build/Example-Component-Library.modl:/modules/Example-Component-Library.modl
+      - ../build/Example-Component-Library.modl:/usr/local/bin/ignition/user-lib/modules/Example-Component-Library.modl
       - ./backups/gateway.gwbk:/restore.gwbk
       - ../web:/web-resources
     labels:
       traefik.enable: "true"
       traefik.hostname: "perspective-component"
     command: >
+      -n perspective-component-gateway
       -r /restore.gwbk
       --
+      -Dia.developer.moduleupload
+      -Dignition.allowunsignedmodules=true
       -Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
+    
+    # If a traefik proxy container is not being used, comment out everything below this line
     networks:
       - default
       - proxy
