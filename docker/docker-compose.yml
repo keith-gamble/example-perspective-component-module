@@ -18,7 +18,7 @@ services:
       -n perspective-component-gateway
       -r /restore.gwbk
       --
-      -Dia.developer.moduleupload
+      -Dia.developer.moduleupload=true
       -Dignition.allowunsignedmodules=true
       -Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
     
