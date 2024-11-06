@@ -1,9 +1,11 @@
 plugins {
 	id("io.ia.sdk.modl") version("0.3.0")
+    id("eclipse")  // Added for better IDE support with Eclipse & VS Code
 }
 
 allprojects {
     version = "0.0.1-SNAPSHOT"
+    apply(plugin = "eclipse")
 }
 
 ignitionModule {

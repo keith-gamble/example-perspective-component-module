@@ -85,6 +85,32 @@ A Docker environment is provided for development and testing. To use it:
 6. After the license is accepted, download a new backup to replace the existing one in the `docker/backups` directory.
 7. Now run `./gradlew build deployModl` to build and deploy the module to the gateway automatically.
 
+## Development Tips
+
+### VS Code Java Intellisense Issues
+If VS Code's Java intellisense isn't working correctly:
+
+1. Run the Eclipse task to regenerate project files:
+
+   ```bash
+   ./gradlew clean eclipse
+   ```
+
+2. In VS Code:
+
+- Press `Cmd/Ctrl` + `Shift` + `P`
+- Type "Java: Clean Java Language Server Workspace"
+- Select "Restart and delete"
+- After reload, run "Java: Reload Projects"
+
+You may need to repeat these steps if you:
+
+- Switch branches with different dependencies
+- Make significant changes to build files
+- Clean the project
+- See unexpected Java import errors
+
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.

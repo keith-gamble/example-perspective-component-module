@@ -1,43 +1,42 @@
-# Gradle build outputs
+# Build outputs
 build/
+**/build/
 bin/
-
-# Web Build files
+**/bin/
 dist/
+**/dist/
+out/
 
-# Temporary build files
+# Temporary files
 tmp_*
 temp/
 tmp/
 
-# VS Code files
+# IDE files
 .vscode/
+.idea/
+.project
+.classpath
+.settings/
+**/.project
+**/.classpath
+**/.settings/
 
-# Gradle user home directory
-.gradle/
-
-# Local Gradle test cache
-.gradle-test-results/
-
-# Gradle Daemon logs
-.gradle-daemon/
-
-# MacOS Files
-.DS_Store
-
-# NPM files
+# Node/NPM
 node_modules/
+**/node_modules/
 **/package-lock.json
 
+# Gradle
+.gradle/
+.gradle-test-results/
+.gradle-daemon/
 gradle.properties
 
-## Python testing files
+# Python
 __pycache__/
 .pytest_cache/
-out/
 
-# IntelliJ IDEA files
-.idea/
-
-# Environment specific values
+# Environment & System files
 .env
+.DS_Store

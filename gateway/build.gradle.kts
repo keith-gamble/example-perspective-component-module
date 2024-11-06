@@ -10,7 +10,7 @@ java {
 }
 
 dependencies {
-    api(projects.common)
+    implementation(projects.common)
 
 	// This is required to get the :web project .jar added into the modl file
 	modlImplementation(projects.web)
