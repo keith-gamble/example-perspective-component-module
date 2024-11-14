@@ -53,16 +53,14 @@ examples.chart.linegraph
 
 ### Consistent Cross-file Naming
 
-```
-Component Type    | Pattern              | Example
------------------|----------------------|------------------
-TypeScript Class | PascalCase           | MyComponent
-Props Interface  | PascalCase + Props   | MyComponentProps
-Meta Class       | PascalCase + Meta    | MyComponentMeta
-Java Class       | PascalCase           | MyComponent
-Props Schema     | kebab-case.props.json| my-component.props.json
-Icon File        | kebab-case-icon.svg  | my-component-icon.svg
-```
+| Component Type   | Pattern               | Example                   |
+| ---------------- | --------------------- | ------------------------- |
+| TypeScript Class | PascalCase            | `MyComponent`             |
+| Props Interface  | PascalCase + Props    | `MyComponentProps`        |
+| Meta Class       | PascalCase + Meta     | `MyComponentMeta`         |
+| Java Class       | PascalCase            | `MyComponent`             |
+| Props Schema     | kebab-case.props.json | `my-component.props.json` |
+| Icon File        | kebab-case-icon.svg   | `my-component-icon.svg`   |
 
 ## File Organization
 
