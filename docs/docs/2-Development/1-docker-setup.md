@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Docker Setup
 description: Setting up the Docker development environment
 ---

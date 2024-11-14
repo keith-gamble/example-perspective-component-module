@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 title: Troubleshooting Guide
 description: Common issues and solutions when working with Example Component Library
 ---

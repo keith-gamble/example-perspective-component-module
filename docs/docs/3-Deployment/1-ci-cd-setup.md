@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: CI/CD Setup
 description: Understanding and implementing automated builds and releases
 ---

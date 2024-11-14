@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 title: Naming Conventions
 description: Understanding and applying consistent naming patterns across your module
 ---

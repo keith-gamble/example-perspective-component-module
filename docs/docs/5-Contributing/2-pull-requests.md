@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 title: Pull Request Guide
 description: How to submit and manage pull requests for the Example Component Library
 ---

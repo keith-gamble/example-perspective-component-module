@@ -1,5 +1,4 @@
 ---
-sidebar_position: 0
 title: Introduction
 description: A comprehensive guide and example for creating custom Ignition Perspective components
 ---
@@ -50,7 +49,7 @@ This structure separates concerns while maintaining Ignition's module convention
 Ready to create your first component? Start with our [Getting Started Guide](Getting%20Started).
 
 :::tip Quick Setup
-If you're familiar with Ignition development, you can jump straight to the [Quick Start Guide](Getting%20Started#quick-start).
+If you're familiar with Ignition development, you can jump straight to the [Quick Start Guide](Getting%20Started/quick-start).
 :::
 
 ## Tools & Technologies

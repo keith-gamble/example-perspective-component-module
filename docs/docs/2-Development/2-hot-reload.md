@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 title: Hot Reload
 description: Setting up and using hot reload for rapid development
 ---

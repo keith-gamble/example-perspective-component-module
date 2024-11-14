@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: Adding Components
 description: Step-by-step guide to creating new Perspective components
 ---

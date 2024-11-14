@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Component Schema Reference
 description: Comprehensive guide to component schema definition and usage
 ---

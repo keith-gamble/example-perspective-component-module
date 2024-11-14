@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: Contributing
 description: How to contribute to the Example Component Library project
 ---

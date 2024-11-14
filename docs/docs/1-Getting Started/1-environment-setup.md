@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: Environment Setup
 description: Set up your development environment for Example Component Library
 ---

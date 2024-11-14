@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 title: Release Process
 description: Understanding and implementing the module release process
 ---

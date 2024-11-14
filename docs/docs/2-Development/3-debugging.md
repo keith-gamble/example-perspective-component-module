@@ -1,5 +1,4 @@
 ---
-sidebar_position: 4
 title: Debugging
 description: Tools and techniques for debugging components
 ---

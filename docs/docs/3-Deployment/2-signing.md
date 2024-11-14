@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Module Signing
 description: Understanding and implementing module signing for security
 ---

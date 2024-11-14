@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: Development Overview
 description: Overview of development workflow and tools
 ---

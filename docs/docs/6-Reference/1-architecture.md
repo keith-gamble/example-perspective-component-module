@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: Architecture Overview
 description: Understanding the technical architecture of Perspective components
 ---

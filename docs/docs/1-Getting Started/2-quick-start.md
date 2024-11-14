@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Quick Start Guide
 description: Get up and running quickly with Example Component Library
 ---

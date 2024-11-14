@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 title: Glossary
 description: Technical terms and concepts in Perspective module development
 ---

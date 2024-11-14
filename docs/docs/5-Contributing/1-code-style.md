@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Code Style Guide
 description: Code style guidelines for the Example Component Library
 ---

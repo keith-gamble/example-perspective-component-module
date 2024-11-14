@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: Build System
 description: Understanding the module build system and configuration
 ---
