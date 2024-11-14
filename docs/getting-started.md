@@ -6,7 +6,7 @@ Welcome to the Example Component Library project! This guide will help you get u
 
 Before you begin, make sure you have the following tools installed:
 
-- Java 11
+- Java 17
 - Gradle 7.6
 - Node.js (LTS version)
 - npm (comes with Node.js)
@@ -44,18 +44,22 @@ Each command should return version information without errors. If you encounter 
 If you're new to any of the technologies we're using, here are some great resources to get you started:
 
 ### Java
+
 - [Java Tutorial for Beginners](https://www.programiz.com/java-programming)
 - [Java Documentation](https://docs.oracle.com/en/java/)
 
 ### Gradle
+
 - [Gradle Getting Started Guide](https://docs.gradle.org/current/userguide/getting_started.html)
 - [Gradle Java Plugin Tutorial](https://docs.gradle.org/current/userguide/building_java_projects.html)
 
 ### TypeScript
+
 - [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
 
 ### NPM
+
 - [NPM Getting Started](https://docs.npmjs.com/getting-started)
 - [NPM CLI Commands](https://docs.npmjs.com/cli/v7/commands)
 
@@ -67,6 +71,17 @@ To understand how Ignition modules work and how to develop them:
 2. [Ignition SDK JavaDocs](https://github.com/inductiveautomation/ignition-sdk-examples/wiki/Javadocs-&-Notable-API-Changes)
 3. [Ignition Module Examples](https://github.com/inductiveautomation/ignition-sdk-examples)
 4. [Ignition Forums Module Development Category](https://forum.inductiveautomation.com/c/module-development/7)
+
+## Key Documentation
+
+Before diving into development, familiarize yourself with these important guides:
+
+- [Environment Setup Guide](environment-setup.md) - Setting up your development environment
+- [Module Build System](module-build-system.md) - Understanding how the module is built and configured
+- [Naming Conventions](naming-conventions.md) - Learn our consistent naming patterns across the codebase
+- [Adding Components](adding-components.md) - Step-by-step guide for creating new components
+
+These guides will give you a solid foundation for working with the Example Component Library.
 
 ## Project Structure
 
@@ -84,6 +99,7 @@ Our project is structured as follows:
 This project uses Kotlin DSL for Gradle build scripts. You'll find `build.gradle.kts` files instead of `build.gradle` files. Kotlin DSL provides better IDE support, type safety, and consistency with Kotlin projects.
 
 Key Gradle files:
+
 - `build.gradle.kts`: Root project build file
 - `settings.gradle.kts`: Defines the project structure and includes subprojects
 - `gradle.properties`: Contains project-wide properties
@@ -94,6 +110,7 @@ Key Gradle files:
 If you're new to any of the technologies we're using, here are some great resources to get you started:
 
 ### Kotlin DSL for Gradle
+
 - [Gradle Kotlin DSL Primer](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - [Migrating build logic from Groovy to Kotlin](https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html)
 - [Gradle-VS-Kotlin](./faq/groovy-vs-kotlin.md)
@@ -106,6 +123,7 @@ Our project uses Gradle for building. The main tasks you'll use are:
 - `./gradlew build deployModl`: Builds and deploys the module to your local Ignition gateway
 
 The build process:
+
 1. Compiles Java code
 2. Builds web resources (TypeScript/React components)
 3. Packages everything into a `.modl` file

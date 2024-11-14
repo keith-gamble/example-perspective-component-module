@@ -1,8 +1,9 @@
+// Configure how Gradle finds and uses plugins
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        mavenCentral()
-        mavenLocal()
+        gradlePluginPortal()  // Standard Gradle plugin repository
+        mavenCentral()        // Central Maven repository
+        mavenLocal()          // Local Maven repository
         // add the IA repo to pull in the module-signer artifact.  Can be removed if the module-signer is maven
         // published locally from its source-code and loaded via mavenLocal.
         maven {
@@ -11,11 +12,14 @@ pluginManagement {
     }
 }
 
+// Configure how Gradle resolves dependencies
 dependencyResolutionManagement {
+    // Prefer repositories defined in settings over project-specific ones
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 
     repositories {
-        mavenLocal()
+        mavenLocal()  // Check local Maven repository first
+        // IA's repository for SDK dependencies
         maven {
             url = uri("https://nexus.inductiveautomation.com/repository/public/")
         }
@@ -27,25 +31,25 @@ dependencyResolutionManagement {
             name = "Node.js"
             setUrl("https://nodejs.org/dist/")
             patternLayout {
+                // Define the pattern for finding Node.js artifacts
                 artifact("v[revision]/[artifact](-v[revision]-[classifier]).[ext]")
             }
             metadataSources {
-                artifact()
+                artifact()  // Only look for artifacts, no ivy.xml files
             }
             content {
+                // Only use this repository for Node.js
                 includeModule("org.nodejs", "node")
             }
         }
     }
 }
 
-
+// Enable type-safe project accessors for cleaner build scripts
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-// this file configures settings for the gradle build tools, as well as the project structure.
-// Generally this doesn't need to be altered unless you are adding/removing sub-projects.
+// Set the root project name
 rootProject.name = "example-component-library"
 
-
-// link up our subprojects as part of this multi-project build.  Add/remove subprojects gradle path notation.
+// Include all subprojects in the build
 include(":common", ":gateway", ":designer", ":web")

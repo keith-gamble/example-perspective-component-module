@@ -1,6 +1,6 @@
 services:
   gateway:
-    image: inductiveautomation/ignition:8.1.32
+    image: inductiveautomation/ignition:8.1.44
     environment:
       ACCEPT_IGNITION_EULA: Y
       GATEWAY_ADMIN_USERNAME: ${GATEWAY_USERNAME:-admin}
@@ -21,12 +21,12 @@ services:
       -Dia.developer.moduleupload=true
       -Dignition.allowunsignedmodules=true
       -Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
-    
+
     # If a traefik proxy container is not being used, comment out everything below this line (https://github.com/design-group/traefik-proxy)
     networks:
       - default
       - proxy
-    
+
 networks:
   default:
   proxy:

@@ -11,20 +11,27 @@
 	},
 	"dependencies": {
 		"@fiverr/afterbuild-webpack-plugin": "^1.0.0",
-		"@inductiveautomation/perspective-client": "2.1.34",
+		"@inductiveautomation/perspective-client": "2.1.44",
 		"axios": "^0.28.0",
-		"react": "16.14.0",
-		"react-dom": "16.14.0"
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
-		"@types/react": "16.8.8",
-		"@types/react-dom": "16.8.3",
+		"@types/react": "^18.2.0",
+		"@types/react-dom": "^18.2.0",
 		"css-loader": "^6.1.2",
 		"mini-css-extract-plugin": "^2.6.0",
 		"rimraf": "^6.0.1",
 		"ts-loader": "^9.2.9",
-		"typescript": "4.2.3",
+		"typescript": "^4.9.5",
 		"webpack": "^5.93.0",
 		"webpack-cli": "4.9.2"
+	},
+	"overrides": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"npm": {
+		"legacy-peer-deps": true
 	}
 }

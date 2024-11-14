@@ -14,6 +14,15 @@ Adding a new component involves creating or modifying files in several parts of 
 
 Let's go through each of these in detail.
 
+## Before You Begin
+
+Make sure you understand:
+
+- The [module build system](module-build-system.md) structure
+- Our [naming conventions](naming-conventions.md)
+
+Following these guidelines ensures your components integrate smoothly with the existing codebase.
+
 ## 1. Web (React/TypeScript)
 
 ### 1.1 Create the React Component
@@ -21,81 +30,91 @@ Let's go through each of these in detail.
 Create a new TypeScript file in `web/src/components/`. For example, `MyNewComponent.tsx`:
 
 ```typescript
-import * as React from 'react';
+import * as React from "react";
 import {
-	Component,
-	ComponentMeta,
-	ComponentProps,
-	PComponent,
-	PropertyTree,
-	SizeObject
-} from '@inductiveautomation/perspective-client';
-
+  Component,
+  ComponentMeta,
+  ComponentProps,
+  PComponent,
+  PropertyTree,
+  SizeObject,
+} from "@inductiveautomation/perspective-client";
 
 // This will be the basis of the components properties in the Ignition Designer
 export interface MyNewComponentProps {
-    text?: string;
+  text?: string;
 }
 
-export class MyNewComponent extends Component<ComponentProps<MyNewComponentProps>, any> {
-	// The render function is where the component's UI is defined. It will be re-rendered whenever the component's properties change.
-    render() {
-		// Pull any necessary properties from the props object so that you can use them in the component
-        const { props: { text }, emit } = this.props;
-        return <div {...emit()}>{text}</div>;
-    }
+export class MyNewComponent extends Component<
+  ComponentProps<MyNewComponentProps>,
+  any
+> {
+  // The render function is where the component's UI is defined. It will be re-rendered whenever the component's properties change.
+  render() {
+    // Pull any necessary properties from the props object so that you can use them in the component
+    const {
+      props: { text },
+      emit,
+    } = this.props;
+    return <div {...emit()}>{text}</div>;
+  }
 }
 
 export class MyNewComponentMeta implements ComponentMeta {
-    getComponentType(): string {
-		// This should match the ID used in the Java component class
-        return 'examples.mynewcomponent';
-    }
+  getComponentType(): string {
+    // This should match the ID used in the Java component class
+    return "examples.mynewcomponent";
+  }
 
-    getViewComponent(): PComponent {
-        return MyNewComponent;
-    }
+  getViewComponent(): PComponent {
+    return MyNewComponent;
+  }
 
-    getDefaultSize(): SizeObject {
-		return ({
-			width: 100,
-			height: 50
-		});
-	}
+  getDefaultSize(): SizeObject {
+    return {
+      width: 100,
+      height: 50,
+    };
+  }
 }
 ```
 
 To update update your component properties from within the component itself, you can use the following method on the ComponentProps object:
 
 ```ts
-
 export interface ExampleComponent {
-    text?: string;
-	// Make sure to add the disabled property to the interface
-	disabled?: boolean;
+  text?: string;
+  // Make sure to add the disabled property to the interface
+  disabled?: boolean;
 }
 
-export class ExampleComponent extends Component<ComponentProps<ExampleComponent>, any> {
-	// ... existing component code
+export class ExampleComponent extends Component<
+  ComponentProps<ExampleComponent>,
+  any
+> {
+  // ... existing component code
 
-	// If we want to disable our button when we click it
-	disableOnClick = () => {
-		// Write to the props store to update the component's properties
-		this.props.store.props.write('disabled', true);
-	}
+  // If we want to disable our button when we click it
+  disableOnClick = () => {
+    // Write to the props store to update the component's properties
+    this.props.store.props.write("disabled", true);
+  };
 
-	// Add the reference to the function in the render method
-	render() {
-		// Make sure to pull the new prop from the props object, to update our component when the prop changes
-		const { props: { text, disabled }, emit } = this.props;
-		return <div 
-				{...emit()}
-				onClick={this.disableOnClick} 
-				disabled={disabled}
-			>{text}</div>;
-	}
+  // Add the reference to the function in the render method
+  render() {
+    // Make sure to pull the new prop from the props object, to update our component when the prop changes
+    const {
+      props: { text, disabled },
+      emit,
+    } = this.props;
+    return (
+      <div {...emit()} onClick={this.disableOnClick} disabled={disabled}>
+        {text}
+      </div>
+    );
+  }
 
-	// ...remaining component code
+  // ...remaining component code
 }
 ```
 
@@ -104,14 +123,20 @@ export class ExampleComponent extends Component<ComponentProps<ExampleComponent>
 Add your new component to `web/src/index.ts`:
 
 ```typescript
-import { ComponentMeta, ComponentRegistry } from '@inductiveautomation/perspective-client';
-import { MyNewComponent, MyNewComponentMeta } from './components/MyNewComponent'; // Import your component
+import {
+  ComponentMeta,
+  ComponentRegistry,
+} from "@inductiveautomation/perspective-client";
+import {
+  MyNewComponent,
+  MyNewComponentMeta,
+} from "./components/MyNewComponent"; // Import your component
 
 export { MyNewComponent }; // Add your component to the exports
 
 const components: Array<ComponentMeta> = [
-    new MyNewComponentMeta(), // Add your component to the list of components
-    // ... other components
+  new MyNewComponentMeta(), // Add your component to the list of components
+  // ... other components
 ];
 
 components.forEach((c: ComponentMeta) => ComponentRegistry.register(c));
@@ -184,7 +209,7 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
     @Override
     public void startup(LicenseState activationState) {
         // ... existing code ...
-        
+
         if (this.componentRegistry != null) {
             this.componentRegistry.registerComponent(MyNewComponent.DESCRIPTOR);
             // ... other component registrations ...
@@ -194,7 +219,7 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
     @Override
     public void shutdown() {
         // ... existing code ...
-        
+
         if (this.componentRegistry != null) {
             this.componentRegistry.removeComponent(MyNewComponent.COMPONENT_ID);
             // ... other component removals ...
@@ -215,7 +240,7 @@ import dev.bwdesigngroup.perspective.examples.common.components.MyNewComponent;
 public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleHook {
     private void init() {
         // ... existing code ...
-        
+
         ComponentUtilities.registerComponentWithIcon(registry, MyNewComponent.DESCRIPTOR, "/images/mynewcomponent-icon.svg");
         // ... other component registrations ...
     }
@@ -248,11 +273,13 @@ Registration involves associating your component's unique ID with its descriptor
 After adding all the necessary files and registering your component:
 
 1. Build the module:
+
    ```
    ./gradlew clean build
    ```
 
 2. Deploy the module to your local Ignition gateway:
+
    ```
    ./gradlew build deployModl
    ```
@@ -281,11 +308,13 @@ If you make changes to the web portion of your component, there is no need to re
 ## Troubleshooting
 
 If your component doesn't appear in the Designer:
+
 - Double-check that you've registered it in both the Gateway and Designer hooks.
 - Ensure that the component ID is consistent across all files.
 - Check the Ignition logs for any error messages.
 
 If your component appears but doesn't function correctly:
+
 - Verify that the props schema matches your TypeScript interface.
 - Check the browser console for any JavaScript errors.
 

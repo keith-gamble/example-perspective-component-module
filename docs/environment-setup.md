@@ -23,7 +23,7 @@ This guide will walk you through setting up a development environment for Java a
    ```
 3. Install Java using SDKMAN!:
    ```
-   sdk install java 11.0.24-zulu
+   sdk install java 17.0.11-zulu
    ```
 
 ### 2. Install Gradle
@@ -87,15 +87,16 @@ It is possible to auto-login to the designer for testing purposes, however it is
 
 ### 8. Mapping Files into the Gateway for Development
 
-It is possible to map your built js files into the gateway, so that you dont need to keep rebuilding the module every time you make a change. To do this, the following mounts, and JVM args have been added to the `docker/docker-compose.yml` file:
+It is possible to map your built js files into the gateway, so that you dont need to keep rebuilding the module every time you make a change. To do this, the following mounts, and JVM args have been added to the `docker/docker-compose.yml` file. In this example repository, this has already been completed for you.
 
 #### `docker/docker-compose.yml`
+
 ```yml
 	volumes:
 	  - ../web:/web-resources
 	# ... other volumes
 
-	commands: 
+	commands:
 	# ... other commands
 	--
 	-Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
@@ -127,3 +128,11 @@ To verify your setup:
 Now that your environment is set up, you're ready to start developing! Check out our [Getting Started Guide](getting-started.md) for next steps on how to begin working with our project.
 
 If you encounter any issues during setup, please refer to the official documentation for each tool or reach out to our support team.
+
+After setting up your environment:
+
+1. Review the [Module Build System](module-build-system.md) to understand how the project is built
+2. Familiarize yourself with our [Naming Conventions](naming-conventions.md)
+3. Follow the [Getting Started Guide](getting-started.md) to begin development
+
+This will ensure you have a complete understanding of the project structure and conventions.

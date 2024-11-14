@@ -4,34 +4,43 @@
 
 While both Groovy and Kotlin can be used for Gradle build scripts, there are several compelling reasons to prefer Kotlin DSL:
 
-1. **Better IDE Support**: 
+1. **Better IDE Support**:
+
    - Kotlin DSL provides superior IDE support, including better code completion, refactoring, and navigation.
    - This leads to a more efficient development experience, especially in complex build scripts.
 
 2. **Type Safety**:
+
    - Kotlin is a statically typed language, which means many errors can be caught at compile-time rather than runtime.
    - This reduces the likelihood of build script errors and makes debugging easier.
 
 3. **Consistency with Kotlin Projects**:
+
    - If your project is already using Kotlin, using Kotlin DSL for Gradle scripts maintains language consistency across your codebase.
 
 4. **Improved Readability**:
+
    - Kotlin's syntax is often more concise and readable, especially for developers already familiar with Java or Kotlin.
    - This can make build scripts easier to understand and maintain.
 
 5. **Better Refactoring Support**:
+
    - Kotlin's strong typing and IDE integration make it easier to refactor build scripts as your project evolves.
 
 6. **Null Safety**:
+
    - Kotlin's null safety features help prevent null pointer exceptions in build scripts.
 
 7. **Access to Kotlin Features**:
+
    - You can use Kotlin's powerful features like extension functions, which can lead to more expressive and maintainable build scripts.
 
 8. **Improved Performance**:
+
    - Kotlin DSL can offer better performance in terms of script compilation and execution, especially for larger projects.
 
 9. **Future-Proofing**:
+
    - Gradle is increasingly focusing on Kotlin DSL, with some newer features being developed primarily for Kotlin DSL.
 
 10. **Learning Curve**:
@@ -56,6 +65,7 @@ For most projects, especially new ones or those already using Kotlin, the benefi
 Since this example repo uses Kotlin DSL, here is a quick example of each of the build scripts in Groovy DSL:
 
 #### ./build.gradle
+
 ```groovy
 plugins {
 	id("io.ia.sdk.modl") version "0.3.0"
@@ -110,6 +120,7 @@ tasks.withType(io.ia.sdk.gradle.modl.task.Deploy).configureEach {
 ```
 
 #### ./settings.gradle
+
 ```
 pluginManagement {
     repositories {
@@ -133,13 +144,14 @@ include(
 ```
 
 #### ./common/build.gradle
+
 ```groovy
 plugins {
     id "java-library"
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
 	compileOnly("com.inductiveautomation.ignitionsdk:ignition-common:${sdk_version}")
@@ -150,14 +162,15 @@ dependencies {
 ```
 
 #### ./designer/build.gradle
+
 ```groovy
 
 plugins {
     id "java-library"
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
 	api(project(":common"))
@@ -173,17 +186,18 @@ dependencies {
 ```
 
 #### ./gateway/build.gradle
+
 ```groovy
 plugins {
     id "java-library"
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
     api(project(":common"))
-	
+
 	// This is required to get the :web project .jar added into the modl file
     modlImplementation(project(":web"))
 
@@ -195,14 +209,15 @@ dependencies {
 ```
 
 #### ./web/build.gradle
+
 ```groovy
 plugins {
     id 'java'
     id 'com.github.node-gradle.node' version '3.2.1'
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 def projectOutput = "$buildDir/generated-resources/"
 
@@ -220,7 +235,7 @@ task installDependencies(type: NpmTask) {
 task webpack(type: NpmTask) {
     args = ['run', 'build']
     dependsOn installDependencies
-    
+
     inputs.files(project.fileTree(".").matching {
         exclude("**/node_modules/**", "**/dist/**", "**/.awcache/**", "**/yarn-error.log")
     }.toList())

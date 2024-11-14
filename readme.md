@@ -4,7 +4,12 @@ This project demonstrates how to create custom components for Ignition Perspecti
 
 ## Project Structure
 
-The project is organized into several key directories:
+Our project is organized according to standard Ignition module conventions. For detailed information about:
+
+- How the build system works, see our [Module Build System Guide](docs/module-build-system.md)
+- Naming patterns and organization, see our [Naming Conventions Guide](docs/naming-conventions.md)
+
+The project contains several key directories:
 
 - `common`: Shared code used by both the Gateway and Designer
 - `designer`: Designer-specific code
@@ -29,7 +34,7 @@ Currently, this project includes one example component:
 
 ## Tools and Technologies
 
-- Java 11
+- Java 17
 - Gradle for building the module
 - npm and Webpack for managing and building web components
 - TypeScript for type-safe JavaScript development
@@ -37,15 +42,17 @@ Currently, this project includes one example component:
 
 ## Building the Project
 
-1. Ensure you have Java 11, Gradle, and Node.js installed.
+1. Ensure you have Java 17, Gradle, and Node.js installed.
 
 2. Clone the repository:
+
    ```
    git clone https://github.com/design-group/example-perspective-component-module.git
    cd example-perspective-component-module
    ```
 
 3. Build the web components to confirm you have the necessary tools and dependencies:
+
    ```
    cd web
    npm install
@@ -67,7 +74,7 @@ This will produce a `.modl` file in the `build/` directory, which can be install
 2. Make changes to the Java code in `common`, `designer`, or `gateway` directories as needed.
 3. Develop React components in the `web/src/components` directory.
 4. Use `npm run watch` in the `web` directory to keep your changes up-to-date.
-5. With the Designer External Debugger open press `CMD + R` (`CTRL + R` on Windows) to refresh the designer and see your changes. 
+5. With the Designer External Debugger open press `CMD + R` (`CTRL + R` on Windows) to refresh the designer and see your changes.
 6. If you change any Java code, you will need to run `./gradlew build` to compile the Java code and redeploy the module to see the changes.
 7. Run `./gradlew build` in the root directory to build the entire module.
 8. Install the resulting `.modl` file in your Ignition gateway for testing.
@@ -88,6 +95,7 @@ A Docker environment is provided for development and testing. To use it:
 ## Development Tips
 
 ### VS Code Java Intellisense Issues
+
 If VS Code's Java intellisense isn't working correctly:
 
 1. Run the Eclipse task to regenerate project files:
@@ -109,7 +117,6 @@ You may need to repeat these steps if you:
 - Make significant changes to build files
 - Clean the project
 - See unexpected Java import errors
-
 
 ## Contributing
 

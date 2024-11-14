@@ -3,6 +3,7 @@
 This guide explains the Continuous Integration and Continuous Deployment (CI/CD) setup for the Example Component Library using GitHub Actions. It covers the entire process from setting up signing certificates to automating builds and releases.
 
 ## Table of Contents
+
 1. [Workflow Overview](#workflow-overview)
 2. [Pull Request Builds](#pull-request-builds-packageyaml)
 3. [Release Process](#release-process-releaseyaml)
@@ -33,9 +34,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
-          java-version: 11
-          cache: 'gradle'
+          distribution: "zulu"
+          java-version: 17
+          cache: "gradle"
       - name: Build
         run: ./gradlew build
       - name: Upload Unsigned Module
@@ -48,7 +49,7 @@ jobs:
 ### What it does:
 
 1. Checks out the code
-2. Sets up Java 11 (Zulu distribution)
+2. Sets up Java 17 (Zulu distribution)
 3. Builds the project using Gradle
 4. Uploads the unsigned `.modl` file as an artifact
 
@@ -63,11 +64,11 @@ name: Publish new version upon tag commit
 on:
   push:
     tags:
-      - '[0-9].[0-9].[0-9]'
+      - "[0-9].[0-9].[0-9]"
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag to build and release'
+        description: "Tag to build and release"
         required: true
 
 jobs:
@@ -78,9 +79,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
-          java-version: 11
-          cache: 'gradle'
+          distribution: "zulu"
+          java-version: 17
+          cache: "gradle"
       - name: Deserialize signing certs
         run: |
           echo "${{ secrets.CODE_SIGNING_CERT_BASE64 }}" | base64 --decode > cert.crt
@@ -111,7 +112,7 @@ jobs:
 ### What it does:
 
 1. Triggers on version tag pushes or manual dispatch
-2. Sets up Java 11 (Zulu distribution)
+2. Sets up Java 17 (Zulu distribution)
 3. Deserializes the signing certificate and keystore
 4. Builds and signs the module using Gradle
 5. Creates a GitHub release with the signed `.modl` file and LICENSE.txt
@@ -196,11 +197,13 @@ After creating your KeyStore and certificate, encode them for use in GitHub secr
 ## Using the CI/CD Pipeline
 
 ### For Pull Requests:
+
 1. Create a pull request to the main branch
 2. The `package.yaml` workflow will automatically run, building the module
 3. Check the workflow results to ensure the build is successful
 
 ### For Releases:
+
 1. Update the version number in your `build.gradle.kts` file
 2. Commit and push your changes
 3. Create and push a new tag matching the pattern `[0-9].[0-9].[0-9]`, e.g.:
@@ -211,6 +214,7 @@ After creating your KeyStore and certificate, encode them for use in GitHub secr
 4. The `release.yaml` workflow will trigger automatically
 
 Alternatively, you can manually trigger the release workflow:
+
 1. Go to the "Actions" tab in your GitHub repository
 2. Select the "Publish new version upon tag commit" workflow
 3. Click "Run workflow"
@@ -248,6 +252,7 @@ keytool -list -v -keystore keystore.jks
 This will list all certificates in the KeyStore, allowing you to verify the alias, validity period, and other details.
 
 Common issues and solutions:
+
 - "keystore password was incorrect" error: Double-check the password you're using.
 - Certificate import fails: Ensure you're using the correct alias and that the certificate matches the key pair in the KeyStore.
 - Signing process fails: Verify that the certificate in the KeyStore matches the one you exported and encoded for the GitHub secret.
