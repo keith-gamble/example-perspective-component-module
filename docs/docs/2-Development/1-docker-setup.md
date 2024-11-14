@@ -117,6 +117,20 @@ GATEWAY_ADMIN_PASSWORD=password
 IGNITION_EDITION=standard
 ```
 
+## Designer Auto-Login
+
+:::warning Security Warning
+Auto-login should only be used for testing purposes and should not be used in a production environment.
+:::
+
+It is possible to auto-login to the designer for testing purposes, however it is noted that this is not secure and should not be used in a production environment. To enable this, add the following JVM args to your designer launcher config for this gateway:
+
+```sh
+-Dautologin.username=some_username;-Dautologin.password=some_password;-Djavaws.ignition.loglevel=INFO;-Djavaws.ignition.debug=true;-Dproject.name=some_project_name;
+```
+
+Note that the entire value must be on one line, and to replace the username, password, and project name with your own values.
+
 ## Common Issues
 
 ### Port Conflicts
