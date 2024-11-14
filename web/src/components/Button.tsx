@@ -36,6 +36,7 @@ export class Button extends Component<ComponentProps<ButtonProps>, any> {
 	 * Fires a custom event when the button is clicked.
 	 */
 	onActionPerformed = () => {
+		console.log("Button clicked!");
 		this.props.componentEvents.fireComponentEvent("onActionPerformed", {});
 	}
 

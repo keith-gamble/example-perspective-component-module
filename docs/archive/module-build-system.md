@@ -107,7 +107,7 @@ signModule=false
 
 ```toml
 [versions]
-ignition = "8.1.34"
+ignition = "8.1.44"
 
 [libraries]
 ignition-common = { module = "com.inductiveautomation.ignitionsdk:ignition-common", version.ref = "ignition" }

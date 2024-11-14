@@ -72,7 +72,7 @@ plugins {
 }
 
 ext {
-    sdk_version = "8.1.34"
+    sdk_version = "8.1.44"
 }
 
 allprojects {

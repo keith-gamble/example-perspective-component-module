@@ -38,7 +38,7 @@ The `libs.versions.toml` file is structured as follows:
 ```toml
 [versions]
 # Versions of dependencies are defined here
-ignition = "8.1.34"
+ignition = "8.1.44"
 guava = "31.1-jre"
 
 [libraries]
@@ -103,7 +103,7 @@ The dependencies between subprojects are defined in their respective `build.grad
 dependencies {
 	// This allows the code built in the :common project to be used in the :gateway project
     api(projects.common)
-	
+
 	// This is required to get the :web project .jar added into the modl file
     modlImplementation(projects.web)
 
@@ -143,7 +143,7 @@ val webpack by tasks.registering(NpmTask::class) {
     args.set(listOf("run", "build"))
 
     dependsOn(installDependencies)
-    
+
     inputs.files(project.fileTree(".").matching {
         exclude("**/node_modules/**", "**/dist/**", "**/.awcache/**", "**/yarn-error.log")
     }.toList())
@@ -210,8 +210,9 @@ This task uses the `gateway` properties defined in `gradle.properties` to connec
 - If the module fails to deploy to the gateway with the following error, you may need to add your CA Certs to your java keystore: `sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target`. This error is because the certificate authority that you used to define your certs isnt trusted by default in Java. To fix the error, adding the CA cert and intermediates to your java keystore will allow the module to deploy.
 
 Example Commands to add your CA Certs to your java keystore:
+
 ```
-keytool -import -cacerts -alias root_ca -file root.crt -storepass changeit 
+keytool -import -cacerts -alias root_ca -file root.crt -storepass changeit
 keytool -import -cacerts -alias localtest -file localtest.crt -storepass changeit
 ```
 
