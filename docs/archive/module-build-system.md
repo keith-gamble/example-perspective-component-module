@@ -59,7 +59,7 @@ ignitionModule {
     // Basic module information
     name.set("Example Component Library")
     fileName.set("Example-Component-Library.modl")
-    id.set("dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary")
+    id.set("dev.kgamble.perspective.examples.ExampleComponentLibrary")
     moduleVersion.set("${project.version}")
 
     // Module requirements
@@ -79,8 +79,8 @@ ignitionModule {
     moduleDependencies.put("com.inductiveautomation.perspective", "GD")
     hooks.putAll(
         mapOf(
-            "dev.bwdesigngroup.perspective.examples.gateway.ExampleComponentLibraryGatewayHook" to "G",
-            "dev.bwdesigngroup.perspective.examples.designer.ExampleComponentLibraryDesignerHook" to "D"
+            "dev.kgamble.perspective.examples.gateway.ExampleComponentLibraryGatewayHook" to "G",
+            "dev.kgamble.perspective.examples.designer.ExampleComponentLibraryDesignerHook" to "D"
         )
     )
 }

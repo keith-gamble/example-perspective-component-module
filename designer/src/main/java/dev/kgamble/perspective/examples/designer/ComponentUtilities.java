@@ -4,7 +4,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-package dev.bwdesigngroup.perspective.examples.designer;
+package dev.kgamble.perspective.examples.designer;
 
 import javax.swing.Icon;
 import java.util.Optional;
@@ -14,7 +14,7 @@ import com.inductiveautomation.ignition.common.util.LoggerEx;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
 
-import dev.bwdesigngroup.perspective.examples.common.utilities.DelegatingComponentDescriptor;
+import dev.kgamble.perspective.examples.common.utilities.DelegatingComponentDescriptor;
 
 /**
  * Utility class for registering components with custom icons in the Ignition Designer.

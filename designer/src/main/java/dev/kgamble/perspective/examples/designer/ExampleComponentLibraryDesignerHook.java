@@ -1,4 +1,4 @@
-package dev.bwdesigngroup.perspective.examples.designer;
+package dev.kgamble.perspective.examples.designer;
 
 import com.inductiveautomation.ignition.common.licensing.LicenseState;
 import com.inductiveautomation.ignition.common.util.LoggerEx;
@@ -7,7 +7,7 @@ import com.inductiveautomation.ignition.designer.model.DesignerContext;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
 import com.inductiveautomation.perspective.designer.api.PerspectiveDesignerInterface;
 
-import dev.bwdesigngroup.perspective.examples.common.components.input.Button;
+import dev.kgamble.perspective.examples.common.components.input.Button;
 
 /**
  * Designer module hook for the Example Component Library.

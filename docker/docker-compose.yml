@@ -20,7 +20,7 @@ services:
       --
       -Dia.developer.moduleupload=true
       -Dignition.allowunsignedmodules=true
-      -Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
+      -Dres.path.dev.kgamble.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
 
     # If a traefik proxy container is not being used, comment out everything below this line (https://github.com/design-group/traefik-proxy)
     networks:

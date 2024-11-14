@@ -1,4 +1,4 @@
-package dev.bwdesigngroup.perspective.examples.gateway;
+package dev.kgamble.perspective.examples.gateway;
 
 import java.util.Optional;
 
@@ -9,8 +9,8 @@ import com.inductiveautomation.ignition.gateway.model.GatewayContext;
 import com.inductiveautomation.perspective.common.api.ComponentRegistry;
 import com.inductiveautomation.perspective.gateway.api.PerspectiveContext;
 
-import dev.bwdesigngroup.perspective.examples.common.Constants;
-import dev.bwdesigngroup.perspective.examples.common.components.input.Button;
+import dev.kgamble.perspective.examples.common.Constants;
+import dev.kgamble.perspective.examples.common.components.input.Button;
 
 /**
  * Gateway module hook for the Example Component Library.

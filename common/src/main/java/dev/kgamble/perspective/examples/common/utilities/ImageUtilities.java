@@ -2,7 +2,7 @@
  * Copyright 2022 Keith Gamble
  * [License information]
  */
-package dev.bwdesigngroup.perspective.examples.common.utilities;
+package dev.kgamble.perspective.examples.common.utilities;
 
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;

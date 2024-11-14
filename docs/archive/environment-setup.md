@@ -99,7 +99,7 @@ It is possible to map your built js files into the gateway, so that you dont nee
 	commands:
 	# ... other commands
 	--
-	-Dres.path.dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
+	-Dres.path.dev.kgamble.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
 ```
 
 The reason that this is mounted at the `./web` level, instead of all the way down to the mounted content, is because when the webpack copy happens if you do a `clean` first it will delete the `build` directory inside of `./web` which will throw off permissions on the finally created content. This just makes it easier to ensure that you have consistent permissions the whole time.

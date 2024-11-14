@@ -1,5 +1,5 @@
 {
-	"name": "@design-group/example-components",
+	"name": "@kgamble/example-components",
 	"version": "0.0.1",
 	"description": "A collection of example React components",
 	"main": "dist/index.js",

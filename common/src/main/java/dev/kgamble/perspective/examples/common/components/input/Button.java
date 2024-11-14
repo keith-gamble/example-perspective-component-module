@@ -1,4 +1,4 @@
-package dev.bwdesigngroup.perspective.examples.common.components.input;
+package dev.kgamble.perspective.examples.common.components.input;
 
 import java.util.List;
 import java.awt.image.BufferedImage;
@@ -7,10 +7,10 @@ import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptorImpl;
 import com.inductiveautomation.perspective.common.api.ComponentEventDescriptor;
 
-import dev.bwdesigngroup.perspective.examples.common.Constants;
-import dev.bwdesigngroup.perspective.examples.common.ExampleComponents;
-import dev.bwdesigngroup.perspective.examples.common.utilities.ComponentUtilities;
-import dev.bwdesigngroup.perspective.examples.common.utilities.ImageUtilities;
+import dev.kgamble.perspective.examples.common.Constants;
+import dev.kgamble.perspective.examples.common.ExampleComponents;
+import dev.kgamble.perspective.examples.common.utilities.ComponentUtilities;
+import dev.kgamble.perspective.examples.common.utilities.ImageUtilities;
 
 /**
  * This class describes the Button component to the Java registry.

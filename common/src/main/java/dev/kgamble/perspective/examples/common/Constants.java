@@ -2,7 +2,7 @@
  * Copyright 2022 Keith Gamble
  * [License information]
  */
-package dev.bwdesigngroup.perspective.examples.common;
+package dev.kgamble.perspective.examples.common;
 
 /**
  * This class contains constant values used across the Example Component Library
@@ -18,7 +18,7 @@ public class Constants {
 	 * This ID is used in various parts of the module sdk to recognize and
 	 * manage the module.
 	 */
-	public static final String MODULE_ID = "dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary";
+	public static final String MODULE_ID = "dev.kgamble.perspective.examples.ExampleComponentLibrary";
 
 	/**
 	 * The URL alias for this module's resources.

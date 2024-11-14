@@ -20,14 +20,14 @@ The module ID follows a reverse domain name pattern and is defined in multiple l
 
 ```kotlin
 ignitionModule {
-    id.set("dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary")
+    id.set("dev.kgamble.perspective.examples.ExampleComponentLibrary")
 }
 ```
 
 2. **Constants** (`Constants.java`):
 
 ```java
-public static final String MODULE_ID = "dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary";
+public static final String MODULE_ID = "dev.kgamble.perspective.examples.ExampleComponentLibrary";
 ```
 
 ### Module URL Alias
@@ -107,7 +107,7 @@ public static final Set<BrowserResource> BROWSER_RESOURCES = Set.of(
 ## Package Structure
 
 ```
-dev.bwdesigngroup.perspective.examples
+dev.kgamble.perspective.examples
 ├── common
 │   ├── Constants.java
 │   ├── components
@@ -122,7 +122,7 @@ dev.bwdesigngroup.perspective.examples
 
 ### Naming Patterns
 
-1. **Base Package**: `dev.bwdesigngroup.perspective.examples`
+1. **Base Package**: `dev.kgamble.perspective.examples`
 2. **Component Categories**: `components.{category}`
 3. **Utility Classes**: `utilities`
 4. **Hook Classes**: `{scope}.hooks`

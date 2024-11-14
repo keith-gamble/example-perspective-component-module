@@ -150,16 +150,16 @@ If your component needs specific styles, add them to `web/src/css/styles.css`.
 
 ### 2.1 Create the Java Component Class
 
-Create a new Java file in `common/src/main/java/dev/bwdesigngroup/perspective/examples/common/components/`. For example, `MyNewComponent.java`:
+Create a new Java file in `common/src/main/java/dev/kgamble/perspective/examples/common/components/`. For example, `MyNewComponent.java`:
 
 ```java
-package dev.bwdesigngroup.perspective.examples.common.components;
+package dev.kgamble.perspective.examples.common.components;
 
 import java.util.List;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptorImpl;
-import dev.bwdesigngroup.perspective.examples.common.Constants;
-import dev.bwdesigngroup.perspective.examples.common.ExampleComponents;
+import dev.kgamble.perspective.examples.common.Constants;
+import dev.kgamble.perspective.examples.common.ExampleComponents;
 
 public class MyNewComponent {
 	// This should match the ID used in the TypeScript component class
@@ -200,10 +200,10 @@ Create a JSON schema file for your component's properties in `common/src/main/re
 
 ### 3.1 Update the Gateway Hook
 
-Modify `gateway/src/main/java/dev/bwdesigngroup/perspective/examples/gateway/ExampleComponentLibraryGatewayHook.java` to register your new component:
+Modify `gateway/src/main/java/dev/kgamble/perspective/examples/gateway/ExampleComponentLibraryGatewayHook.java` to register your new component:
 
 ```java
-import dev.bwdesigngroup.perspective.examples.common.components.MyNewComponent;
+import dev.kgamble.perspective.examples.common.components.MyNewComponent;
 
 public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHook {
     @Override
@@ -232,10 +232,10 @@ public class ExampleComponentLibraryGatewayHook extends AbstractGatewayModuleHoo
 
 ### 4.1 Update the Designer Hook
 
-Modify `designer/src/main/java/dev/bwdesigngroup/perspective/examples/designer/ExampleComponentLibraryDesignerHook.java` to register your new component:
+Modify `designer/src/main/java/dev/kgamble/perspective/examples/designer/ExampleComponentLibraryDesignerHook.java` to register your new component:
 
 ```java
-import dev.bwdesigngroup.perspective.examples.common.components.MyNewComponent;
+import dev.kgamble.perspective.examples.common.components.MyNewComponent;
 
 public class ExampleComponentLibraryDesignerHook extends AbstractDesignerModuleHook {
     private void init() {

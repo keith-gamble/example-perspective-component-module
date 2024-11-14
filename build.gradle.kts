@@ -20,7 +20,7 @@ ignitionModule {
     // Basic module metadata
     name.set("Example Component Library")  // The human-readable name shown in the Gateway
     fileName.set("Example-Component-Library.modl")  // The output file name
-    id.set("dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary")  // Unique module identifier
+    id.set("dev.kgamble.perspective.examples.ExampleComponentLibrary")  // Unique module identifier
     moduleVersion.set("${project.version}")  // Version from allprojects block
     license.set("LICENSE.txt")  // License file to include
     moduleDescription.set("A module that adds Example React components to Perspective.")
@@ -44,8 +44,8 @@ ignitionModule {
     // Register the module hooks that initialize the module in each scope
     hooks.putAll(
         mapOf(
-        "dev.bwdesigngroup.perspective.examples.gateway.ExampleComponentLibraryGatewayHook" to "G",
-        "dev.bwdesigngroup.perspective.examples.designer.ExampleComponentLibraryDesignerHook" to "D"
+        "dev.kgamble.perspective.examples.gateway.ExampleComponentLibraryGatewayHook" to "G",
+        "dev.kgamble.perspective.examples.designer.ExampleComponentLibraryDesignerHook" to "D"
 		)
 	)
 

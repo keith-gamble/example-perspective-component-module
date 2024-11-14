@@ -82,7 +82,7 @@ allprojects {
 ignitionModule {
     name = "Example Component Library"
     fileName = "Example-Component-Library.modl"
-    id = "dev.bwdesigngroup.perspective.examples.ExampleComponentLibrary"
+    id = "dev.kgamble.perspective.examples.ExampleComponentLibrary"
     moduleVersion = version
     license = "LICENSE.txt"
     moduleDescription = "A module that adds Example React components to Perspective."
@@ -98,8 +98,8 @@ ignitionModule {
     moduleDependencies = [ "com.inductiveautomation.perspective": "GD" ]
 
     hooks = [
-        "dev.bwdesigngroup.perspective.examples.gateway.ExampleComponentLibraryGatewayHook": "G",
-        "dev.bwdesigngroup.perspective.examples.designer.ExampleComponentLibraryDesignerHook": "D"
+        "dev.kgamble.perspective.examples.gateway.ExampleComponentLibraryGatewayHook": "G",
+        "dev.kgamble.perspective.examples.designer.ExampleComponentLibraryDesignerHook": "D"
     ]
 
     applyInductiveArtifactRepo = true
