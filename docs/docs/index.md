@@ -1,4 +1,5 @@
 ---
+sidebar_position: 0
 title: Introduction
 description: A comprehensive guide and example for creating custom Ignition Perspective components
 ---
