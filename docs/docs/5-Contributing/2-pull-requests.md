@@ -178,9 +178,7 @@ cd web && npm test
 
 ## Need Help?
 
-- Review our [Contributing Guide](./index)
-- Check our [Code Style Guide](./code-style)
+- Check our [Code Style Guide](code-style)
 - Ask in GitHub discussions
-- Join our community chat
 
 Remember, every contribution helps make the project better! Thank you for your efforts! 🙏

@@ -160,4 +160,4 @@ docs(readme): update setup instructions
 - Write self-documenting code
 - Include tests for new features
 
-For more details about our development workflow, see our [Pull Request Guide](./pull-requests).
+For more details about our development workflow, see our [Pull Request Guide](pull-requests).

@@ -27,7 +27,7 @@ graph LR
 
 ## Certificate Types
 
-### Self-Signed (Development)
+### Self-Signed (../Development)
 
 - Quick to create
 - Good for testing
@@ -199,11 +199,3 @@ Never commit certificates or keystores to version control. Store securely and di
 
 - **Problem**: Build signing fails
 - **Solution**: Check certificate and password accuracy
-
-## Next Steps
-
-After setting up signing:
-
-1. Configure [CI/CD integration](./ci-cd-setup)
-2. Learn about [releasing modules](./releasing)
-3. Test signature verification

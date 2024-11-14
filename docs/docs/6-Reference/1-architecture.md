@@ -281,6 +281,6 @@ public static final Set<BrowserResource> BROWSER_RESOURCES = Set.of(
 
 ## Next Steps
 
-- Review [Component Schema](./component-schema)
-- Study [Naming Conventions](../guides/naming-conventions)
-- Explore [Development Setup](../development/docker-setup)
+- Review [Component Schema](component-schema)
+- Study [Naming Conventions](../Guides/naming-conventions)
+- Explore [Development Setup](../Development/docker-setup)

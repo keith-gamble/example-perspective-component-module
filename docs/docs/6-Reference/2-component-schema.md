@@ -384,6 +384,6 @@ class MyComponent extends Component<ComponentProps<MyComponentProps>> {
 
 ## Next Steps
 
-- Study [Architecture Overview](./architecture)
-- Review [Naming Conventions](../guides/naming-conventions)
-- Learn about [Adding Components](../guides/adding-components)
+- Study [Architecture Overview](architecture)
+- Review [Naming Conventions](../Guides/naming-conventions)
+- Learn about [Adding Components](../Guides/adding-components)

@@ -223,11 +223,3 @@ Before any release:
 - [ ] Documentation updated
 - [ ] Breaking changes documented
       :::
-
-## Next Steps
-
-After understanding releases:
-
-1. Set up [CI/CD automation](./ci-cd-setup)
-2. Configure [module signing](./signing)
-3. Plan your release schedule

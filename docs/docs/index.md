@@ -47,10 +47,10 @@ This structure separates concerns while maintaining Ignition's module convention
 
 ## Getting Started
 
-Ready to create your first component? Start with our [Getting Started Guide](./getting-started).
+Ready to create your first component? Start with our [Getting Started Guide](Getting%20Started).
 
 :::tip Quick Setup
-If you're familiar with Ignition development, you can jump straight to the [Quick Start Guide](./getting-started#quick-start).
+If you're familiar with Ignition development, you can jump straight to the [Quick Start Guide](Getting%20Started#quick-start).
 :::
 
 ## Tools & Technologies
@@ -66,19 +66,18 @@ This project leverages modern development tools:
 
 ## Next Steps
 
-- [Set up your development environment](./environment-setup)
-- [Understand the build system](./module-build-system)
-- [Learn our naming conventions](./naming-conventions)
-- [Add your first component](./adding-components)
+- [Set up your development environment](Getting%20Started/environment-setup)
+- [Understand the build system](Guides/build-system)
+- [Learn our naming conventions](Guides/naming-conventions)
+- [Add your first component](Guides/adding-components)
 
 ## Support
 
 If you need help or want to report an issue:
 
-1. Check our [FAQ](./faq/index)
-2. Search [existing issues](https://github.com/keith-gamble/example-perspective-component-module/issues)
-3. Create a new issue if needed
+1. Search [existing issues](https://github.com/keith-gamble/example-perspective-component-module/issues)
+2. Create a new issue if needed
 
 ## Contributing
 
-We welcome contributions! See our [Contributing Guide](./contributing) to get started.
+We welcome contributions! See our [Contributing Guide](Contributing) to get started.

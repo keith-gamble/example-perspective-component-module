@@ -300,6 +300,6 @@ Use IDE refactoring tools when renaming to ensure all references are updated cor
 
 ## Next Steps
 
-- Review [adding components](./adding-components) guide
-- Understand [build system](./build-system)
-- Set up [development environment](../development/docker-setup)
+- Review [adding components](adding-components) guide
+- Understand [build system](build-system)
+- Set up [development environment](../Development/docker-setup)

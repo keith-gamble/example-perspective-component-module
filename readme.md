@@ -47,7 +47,7 @@ For detailed setup instructions, see our [Getting Started Guide](https://keith-g
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](https://keith-gamble.github.io/example-perspective-component-module/contributing) for details.
+We welcome contributions! Please see our [Contributing Guide](https://keith-gamble.github.io/example-perspective-component-module/5-Contributing) for details.
 
 ## 📝 License
 

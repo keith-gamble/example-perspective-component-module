@@ -198,6 +198,5 @@ This setup provides several advantages:
 
 After setting up CI/CD:
 
-1. Learn about [module signing](./signing)
-2. Understand the [release process](./releasing)
-3. Set up [automated testing](../development/testing)
+1. Learn about [module signing](signing)
+2. Understand the [release process](releasing)

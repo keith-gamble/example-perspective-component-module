@@ -17,9 +17,9 @@ Before you begin, ensure you have:
 
 ## Quick Overview
 
-1. Set up your [development environment](./environment-setup)
-2. Follow the [quick start guide](./quick-start) to build your first component
-3. Check [troubleshooting](./troubleshooting) if you encounter issues
+1. Set up your [development environment](environment-setup)
+2. Follow the [quick start guide](quick-start) to build your first component
+3. Check [troubleshooting](troubleshooting) if you encounter issues
 
 ## Development Flow
 
@@ -34,6 +34,6 @@ graph LR
 
 ## Next Steps
 
-- [Environment Setup Guide](./environment-setup) - Set up your development tools
-- [Quick Start Guide](./quick-start) - Build your first component
-- [Troubleshooting Guide](./troubleshooting) - Common issues and solutions
+- [Environment Setup Guide](environment-setup) - Set up your development tools
+- [Quick Start Guide](quick-start) - Build your first component
+- [Troubleshooting Guide](troubleshooting) - Common issues and solutions

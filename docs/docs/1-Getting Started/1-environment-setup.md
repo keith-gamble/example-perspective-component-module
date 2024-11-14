@@ -65,6 +65,6 @@ docker-compose --version
 
 ## Next Steps
 
-- Follow our [Quick Start Guide](./quick-start)
-- Check [Troubleshooting](./troubleshooting) if needed
-- Learn about our [development workflow](../development/hot-reload)
+- Follow our [Quick Start Guide](quick-start)
+- Check [Troubleshooting](troubleshooting) if needed
+- Learn about our [development workflow](../Development/hot-reload)

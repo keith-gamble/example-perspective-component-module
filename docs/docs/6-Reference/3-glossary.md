@@ -310,4 +310,4 @@ Keep certificates and private keys secure and never commit them to version contr
 
 ## Additional Terms
 
-Want to suggest a term for this glossary? [Submit an issue](https://github.com/your-org/your-repo/issues/new) with the label `documentation`.
+Want to suggest a term for this glossary? [Submit an issue](https://github.com/keith-gamble/example-perspective-component-module/issues/new) with the label `documentation`.

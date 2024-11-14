@@ -18,9 +18,9 @@ graph LR
 
 ## Key Topics
 
-1. [Docker Setup](./docker-setup) - Configure development environment
-2. [Hot Reload](./hot-reload) - Real-time development workflow
-3. [Debugging](./debugging) - Troubleshooting and debugging tools
+1. [Docker Setup](docker-setup) - Configure development environment
+2. [Hot Reload](hot-reload) - Real-time development workflow
+3. [Debugging](debugging) - Troubleshooting and debugging tools
 
 ## Quick Reference
 

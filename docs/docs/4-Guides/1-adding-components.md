@@ -233,7 +233,7 @@ Remember that changes to Java classes or prop schemas require a module rebuild a
 
    - Match component IDs across frontend and backend
    - Use descriptive, category-based naming
-   - Follow [naming conventions](./naming-conventions)
+   - Follow [naming conventions](naming-conventions)
 
 2. **Props Design**
 
@@ -254,6 +254,5 @@ Remember that changes to Java classes or prop schemas require a module rebuild a
 
 ## Next Steps
 
-- Learn about [module building](./build-system)
-- Understand [resource management](./resource-management)
-- Study our [naming conventions](./naming-conventions)
+- Learn about [module building](build-system)
+- Study our [naming conventions](naming-conventions)

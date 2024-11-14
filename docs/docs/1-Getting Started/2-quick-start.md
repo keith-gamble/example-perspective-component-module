@@ -72,6 +72,6 @@ docker-compose up -d
 
 ## Next Steps
 
-- Learn about [adding new components](../guides/adding-components)
-- Understand our [build system](../guides/build-system)
-- Set up [hot reload](../development/hot-reload)
+- Learn about [adding new components](../Guides/adding-components)
+- Understand our [build system](../Guides/build-system)
+- Set up [hot reload](../Development/hot-reload)
