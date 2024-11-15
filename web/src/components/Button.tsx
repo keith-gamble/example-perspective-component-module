@@ -1,5 +1,7 @@
 /**
  * This file defines a custom Button component for use in Ignition Perspective.
+ * The component provides a basic button with configurable text and enabled state,
+ * with proper handling of designer/preview modes.
  */
 import * as React from 'react';
 import {
@@ -28,6 +30,7 @@ export interface ButtonProps {
 /**
  * Button component class.
  * Extends the base Component class from Perspective, typed with ButtonProps.
+ * Provides a customizable button with proper handling of designer/preview modes.
  */
 export class Button extends Component<ComponentProps<ButtonProps>, any> {
 
@@ -36,10 +39,15 @@ export class Button extends Component<ComponentProps<ButtonProps>, any> {
 	 * Fires a custom event when the button is clicked.
 	 */
 	onActionPerformed = () => {
+		// If the designer is in "design" mode, don't do anything
+		if (!this.props.eventsEnabled) {
+			console.log("Button is disabled in the design-scope");
+			return;
+		}
+
 		console.log("Button clicked!");
 		this.props.componentEvents.fireComponentEvent("onActionPerformed", {});
 	}
-
 	/**
 	 * Render method for the Button component.
 	 * @returns JSX element representing the button

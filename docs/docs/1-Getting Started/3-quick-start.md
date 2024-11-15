@@ -17,12 +17,15 @@ cd example-perspective-component-module
 # Configure environment
 cp gradle.properties.template gradle.properties
 
+# Build and deploy
+./gradlew build
+
 # Start development environment
 cd docker && docker-compose up -d
 cd ..
 
-# Build and deploy
-./gradlew build deployModl
+# Deploy module
+./gradlew deployModl
 ```
 
 ## Step-by-Step Guide
@@ -42,6 +45,18 @@ Copy the `gradle.properties.template` file to `gradle.properties`, and update th
 cp gradle.properties.template gradle.properties
 ```
 
+### 4. Build the Module
+
+:::warning Build Needed
+You must build the module at least once before starting the development environment. This is because the end `.modl` file is mapped into the gateway, and if you start the container first, then docker will implicitly createa a directory in place of where the `modl` file will go.
+
+To correct this, run a `./gradlew deepClean` to remove the `build` directory, then bring down the docker containers with `docker-compose down`, run `./gradlew build` again, and then start the docker containers with `docker-compose up -d`.
+:::
+
+```bash
+./gradlew build
+```
+
 ### 3. Start Development Environment
 
 ```bash
@@ -52,7 +67,7 @@ docker-compose up -d
 ### 4. Build and Deploy
 
 ```bash
-./gradlew build deployModl
+./gradlew deployModl
 ```
 
 ### 5. Accept License Agreement

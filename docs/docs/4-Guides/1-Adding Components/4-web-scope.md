@@ -50,6 +50,13 @@ export class Checkbox extends Component<ComponentProps<CheckboxProps>> {
    * @param event - The change event from the checkbox input
    */
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Check to make sure events are enabled, in the designer scope they shouldnt be.
+    // However in the preview scope and client scope they should be.
+    if (!this.props.eventsEnabled) {
+      return;
+    }
+
+    // Get the new value from the checkbox input
     const newValue = event.target.checked;
 
     // Update the component's value in Perspective's prop store
