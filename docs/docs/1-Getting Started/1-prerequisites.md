@@ -23,7 +23,7 @@ The videos and resources referenced here are generally aimed at beginner program
 | React       | 4-8 hours    | 24 hours         | High     |
 | Perspective | 8-16 hours   | 24 hours         | High     |
 
-## Fast Track Learning Path (20-40 hours total)
+## Fast Track Learning Path (20-34 hours total)
 
 ### 1. JavaScript Basics (2-4 hours)
 
