@@ -21,9 +21,26 @@ This guide provides the minimum knowledge needed to start building Perspective c
 
 ## Fast Track Learning Path (20-40 hours total)
 
-### 1. React Essentials (4-8 hours)
+### 1. JavaScript Basics (2-4 hours)
 
-Start here - this is the foundation of component development.
+Start here - you'll need this for any of the web components.
+
+**Must Know:**
+
+- Variables and data types
+- Functions and scope
+- Arrays and objects
+- Basic DOM manipulation
+- General HTML/CSS knowledge
+
+**Quick Start Resources:**
+
+1. [Learn Javascript](https://www.codecademy.com/learn/introduction-to-javascript) (10 hours)
+2. [JavaScript in 100 Seconds](https://www.youtube.com/watch?v=DHjqpvDnNGE) (2 minutes)
+
+### 2. React Essentials (4-8 hours)
+
+This is the foundation of component development.
 
 **Must Know:**
 
@@ -38,9 +55,9 @@ Start here - this is the foundation of component development.
 2. [Learn React](https://react.dev/learn) (1 hour)
 3. [Tic-Tac-Toe Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) (1-2 hours)
 
-### 2. TypeScript Quick Start (2-2 hours)
+### 3. TypeScript Quick Start (2-2 hours)
 
-Just enough TypeScript to be productive with React.
+Just enough TypeScript to be productive with this component library.
 
 **Must Know:**
 
@@ -54,7 +71,7 @@ Just enough TypeScript to be productive with React.
 1. [TypeScript for the new programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html) (1 hour)
 2. [Learn Typescript](https://www.codecademy.com/learn/learn-typescript) (8 hours)
 
-### 3. Java Fundamentals (2-4 hours)
+### 4. Java Fundamentals (2-4 hours)
 
 Focus on the basics needed for Gateway/Designer development.
 
@@ -68,7 +85,7 @@ Focus on the basics needed for Gateway/Designer development.
 
 - [Learn Java](https://www.codecademy.com/learn/learn-java) (8 hours)
 
-### 4. Quick Tools Overview (2-4 hours total)
+### 5. Quick Tools Overview (2-4 hours total)
 
 **Gradle (1-2 hours)**
 
@@ -79,7 +96,7 @@ Focus on the basics needed for Gateway/Designer development.
 - [Learn Node.js](https://www.codecademy.com/learn/learn-node-js) (4 hours)
 - [Introduction to npm](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) (1 hour)
 
-### 5. Ignition Perspective (8-16 hours)
+### 6. Ignition Perspective (8-16 hours)
 
 Essential platform knowledge - can't skip this one.
 
