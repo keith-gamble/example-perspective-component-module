@@ -1,0 +1,37 @@
+{
+	"folders": [
+    {
+      "name": "Root",
+      "path": "."
+    },
+	{
+		"name": "Docs",
+		"path": "docs/docs"
+	},
+    {
+      "name": "Common",
+      "path": "common/src/main"
+    },
+    {
+      "name": "Designer",
+      "path": "designer/src/main"
+    },
+    {
+      "name": "Gateway",
+      "path": "gateway/src/main"
+    },
+    {
+      "name": "Web",
+      "path": "web"
+    }
+  ]],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.format.settings.url": ".vscode/java-formatter.xml",
+		
+		"java.import.gradle.version": "wrapper",
+		"java.import.gradle.wrapper.enabled": true,
+		"java.import.gradle.user.home": null
+	}
+}

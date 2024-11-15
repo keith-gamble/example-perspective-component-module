@@ -48,7 +48,7 @@ export class Button extends Component<ComponentProps<ButtonProps>, any> {
 		const { props: { text, enabled }, emit } = this.props;
 		return (
 			<button
-				{...emit({ classes: ['dg-example-button'] })}
+				{...emit({ classes: ['kg-example-button'] })}
 				onClick={this.onActionPerformed}
 				disabled={!enabled}
 			>

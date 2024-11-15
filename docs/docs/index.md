@@ -69,7 +69,7 @@ This project leverages modern development tools:
 - [Set up your development environment](Getting%20Started/environment-setup)
 - [Understand the build system](Guides/build-system)
 - [Learn our naming conventions](Guides/naming-conventions)
-- [Add your first component](Guides/adding-components)
+- [Add your first component](Guides/Adding%20Components)
 
 ## Support
 

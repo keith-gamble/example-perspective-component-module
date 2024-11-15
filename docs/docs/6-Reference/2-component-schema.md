@@ -1,388 +1,251 @@
 ---
 title: Component Schema Reference
-description: Comprehensive guide to component schema definition and usage
+description: Understanding component property and event schemas in Perspective
 ---
 
 # Component Schema Reference
 
-This guide details how to define and use component schemas in Perspective modules.
+This guide explains how to define component properties and events using Perspective's schema system.
 
-## Schema Structure
+## Property Schemas
 
-### Basic Schema
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "propertyName": {
-      "type": "string",
-      "description": "Property description",
-      "default": "Default value"
-    }
-  }
-}
-```
-
-## Property Types
-
-### Basic Types
-
-```mermaid
-graph TB
-    A[Property Types] --> B[Simple]
-    A --> C[Complex]
-    A --> D[Special]
-
-    B --> B1[string]
-    B --> B2[number]
-    B --> B3[boolean]
-
-    C --> C1[array]
-    C --> C2[object]
-
-    D --> D1[action]
-    D --> D2[dataset]
-    D --> D3[tag]
-```
-
-### Type Examples
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "text": {
-      "type": "string",
-      "description": "Display text"
-    },
-    "fontSize": {
-      "type": "number",
-      "minimum": 8,
-      "maximum": 72
-    },
-    "isEnabled": {
-      "type": "boolean",
-      "default": true
-    },
-    "items": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "style": {
-      "type": "object",
-      "properties": {
-        "color": { "type": "string" },
-        "padding": { "type": "number" }
-      }
-    },
-    "onClick": {
-      "type": "action"
-    },
-    "data": {
-      "type": "dataset"
-    },
-    "tagPath": {
-      "type": "tag"
-    }
-  }
-}
-```
-
-## Special Properties
-
-### Actions
-
-```json
-{
-  "onClick": {
-    "type": "action",
-    "description": "Click event handler",
-    "parameters": [
-      {
-        "name": "value",
-        "type": "string"
-      },
-      {
-        "name": "event",
-        "type": "object"
-      }
-    ]
-  }
-}
-```
-
-### Datasets
-
-```json
-{
-  "data": {
-    "type": "dataset",
-    "description": "Data to display",
-    "columns": [
-      {
-        "name": "timestamp",
-        "type": "datetime"
-      },
-      {
-        "name": "value",
-        "type": "number"
-      }
-    ]
-  }
-}
-```
-
-### Tags
-
-```json
-{
-  "tagPath": {
-    "type": "tag",
-    "description": "Tag to bind",
-    "dataType": "float",
-    "readOnly": false
-  }
-}
-```
-
-## Validation Rules
-
-### String Validation
-
-```json
-{
-  "text": {
-    "type": "string",
-    "minLength": 1,
-    "maxLength": 100,
-    "pattern": "^[A-Za-z0-9]+$"
-  }
-}
-```
-
-### Numeric Validation
-
-```json
-{
-  "value": {
-    "type": "number",
-    "minimum": 0,
-    "maximum": 100,
-    "multipleOf": 0.5
-  }
-}
-```
-
-### Array Validation
-
-```json
-{
-  "items": {
-    "type": "array",
-    "minItems": 1,
-    "maxItems": 10,
-    "uniqueItems": true,
-    "items": {
-      "type": "string"
-    }
-  }
-}
-```
-
-## Property Categories
-
-### Visual Properties
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "style": {
-      "type": "object",
-      "properties": {
-        "backgroundColor": {
-          "type": "string",
-          "format": "color"
-        },
-        "borderRadius": {
-          "type": "number",
-          "minimum": 0
-        },
-        "padding": {
-          "type": "number",
-          "minimum": 0
-        }
-      }
-    }
-  }
-}
-```
-
-### Behavior Properties
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "isEnabled": {
-      "type": "boolean",
-      "default": true
-    },
-    "isVisible": {
-      "type": "boolean",
-      "default": true
-    },
-    "isRequired": {
-      "type": "boolean",
-      "default": false
-    }
-  }
-}
-```
-
-### Data Properties
+### Basic Property Types
 
 ```json
 {
   "type": "object",
   "properties": {
     "value": {
-      "type": "string"
+      "default": "Radio button",
+      "description": "The value of the selected radio"
     },
-    "defaultValue": {
-      "type": "string"
+    "enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "If user should be allowed to select a radio"
     },
-    "placeholder": {
-      "type": "string"
+    "index": {
+      "type": "number",
+      "description": "The index of the selected radio",
+      "default": 0
     }
   }
 }
 ```
 
-## Component Implementation
+### Enumerated vs Suggested Values
 
-### TypeScript Interface
+Perspective supports both strict enums and flexible suggestions:
 
-```typescript
-interface MyComponentProps {
-  // Match schema properties
-  text?: string;
-  fontSize?: number;
-  isEnabled?: boolean;
-  items?: string[];
-  style?: {
-    color?: string;
-    padding?: number;
-  };
-  onClick?: () => void;
-  data?: Dataset;
-  tagPath?: string;
+```json
+{
+  "properties": {
+    "textPosition": {
+      "type": "string",
+      "enum": ["top", "right", "bottom", "left"],
+      "default": "right",
+      "description": "Where to place label text in relation to radio button"
+    },
+    "align": {
+      "type": "string",
+      "description": "Align radios along the cross axis",
+      "suggestions": ["start", "center", "end"],
+      "default": "center"
+    }
+  }
 }
 ```
 
-### Property Access
+:::tip Enum vs Suggestions
 
-```typescript
-class MyComponent extends Component<ComponentProps<MyComponentProps>> {
-  render() {
-    const { text, fontSize, isEnabled, style, onClick } = this.props;
+- Use `enum` when values must be from a specific set
+- Use `suggestions` and a `string` type when offering recommended values but allowing custom input
+  :::
 
-    return (
-      <div
-        style={{
-          ...style,
-          fontSize: fontSize,
-        }}
-        onClick={onClick}
-      >
-        {text}
-      </div>
-    );
+### Array Properties
+
+Arrays with complex item definitions:
+
+```json
+{
+  "radios": {
+    "type": "array",
+    "description": "List of radios that make up this group",
+    "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "text", "selected"],
+      "properties": {
+        "text": {
+          "type": ["string", "number"],
+          "default": "",
+          "description": "Text to pair with this radio"
+        },
+        "selected": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, this radio is selected"
+        },
+        "value": {
+          "default": "",
+          "description": "The value of the radio to be evaluated when selected"
+        }
+      },
+      "default": {
+        "text": "Radio button",
+        "selected": false,
+        "value": ""
+      }
+    },
+    "default": [
+      {
+        "text": "Radio button",
+        "selected": true,
+        "value": "Radio button"
+      }
+    ]
   }
+}
+```
+
+### Complex Object References
+
+Using schema definitions and references:
+
+```json
+{
+  "properties": {
+    "selectedIcon": {
+      "$ref": "urn:ignition-schema:schemas/icon-schema.json",
+      "default": {
+        "path": "material/radio_button_checked",
+        "color": "red"
+      },
+      "description": "Icon to show when selected"
+    }
+  },
+  "definitions": {
+    "icon": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "default": "",
+          "description": "Shorthand path to icon source, in format: library/iconName"
+        },
+        "color": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "string",
+              "format": "color",
+              "default": "",
+              "description": "Color of the icon when enabled"
+            },
+            "disabled": {
+              "type": "string",
+              "format": "color",
+              "default": "",
+              "description": "Color of the icon when disabled"
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "required": ["path"]
+        },
+        {
+          "required": ["library", "name"]
+        }
+      ]
+    }
+  }
+}
+```
+
+### Style Properties
+
+Perspective provides standard style schema references:
+
+```json
+{
+  "radioStyle": {
+    "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+    "description": "Style properties for individual radio buttons"
+  },
+  "style": {
+    "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+    "description": "Style properties for the component container"
+  }
+}
+```
+
+## Event Schemas
+
+Events define the data structure that will be emitted when the event occurs.
+
+```json
+{
+  "events": [
+    {
+      "name": "onActionPerformed",
+      "description": "This event is fired when the 'action' of the component occurs.",
+      "documentationUrl": "https://links.inductiveautomation.com/81-action-performed-event",
+      "schema": {
+        "type": "object"
+      }
+    }
+  ]
 }
 ```
 
 ## Best Practices
 
-1. **Schema Design**
+1. **Property Definitions**
 
-   - Use clear property names
-   - Add descriptions
-   - Set default values
-   - Include validation
+   - Use clear descriptions
+   - Provide sensible defaults
+   - Consider using suggestions for flexible inputs
+   - Use enums for strict value sets
 
-2. **Type Safety**
+2. **Schema Structure**
 
-   - Match TypeScript types
-   - Validate prop usage
-   - Handle optional props
+   - Use references for reusable definitions
+   - Group related properties logically
+   - Consider using `additionalProperties: false` for strict typing
 
 3. **Documentation**
-   - Document all properties
-   - Explain validations
-   - Provide examples
 
-## Common Patterns
+   - Include descriptive comments
+   - Add documentation URLs for complex features
+   - Explain relationships between properties
 
-### Forms
+4. **Validation**
+   - Use required arrays for mandatory properties
+   - Provide clear validation rules
+   - Consider using oneOf for complex validation
 
-```json
-{
-  "type": "object",
-  "properties": {
-    "label": {
-      "type": "string"
-    },
-    "value": {
-      "type": "string"
-    },
-    "validation": {
-      "type": "object",
-      "properties": {
-        "required": {
-          "type": "boolean"
-        },
-        "pattern": {
-          "type": "string"
-        }
-      }
-    }
-  }
-}
-```
+## Schema References
 
-### Data Display
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "data": {
-      "type": "dataset"
-    },
-    "columns": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-## Next Steps
-
-- Study [Architecture Overview](architecture)
-- Review [Naming Conventions](../Guides/naming-conventions)
-- Learn about [Adding Components](../Guides/adding-components)
+| Feature                 | Description                                                                                                   | Example                                                                       |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `type`                  | Defines the data type of a property, such as `object`, `array`, `number`, `string`, or `boolean`.             | `"type": "object"`                                                            |
+| `default`               | Specifies a default value for a property when it’s not explicitly set.                                        | `"default": 640"`                                                             |
+| `description`           | Provides a description of a property’s function or purpose.                                                   | `"description": "Width below which container displays small child"`           |
+| `enum`                  | Lists allowed values for a property, restricting input to predefined options.                                 | `"enum": ["width", "height"]`                                                 |
+| `visibleWhen`           | Conditions when a property is visible based on another property’s value, enhancing conditional rendering.     | `"visibleWhen": {"property": "mode", "equals": "percent"}`                    |
+| `$ref`                  | References external schema definitions, allowing reusability and modularity.                                  | `"$ref": "urn:ignition-schema:schemas/style-properties.schema.json"`          |
+| `oneOf`                 | Allows for multiple possible schemas for a single property, with conditions to match one of the listed types. | `"oneOf": [{"type": "string"}, {"type": "object", "required": ["viewPath"]}]` |
+| `required`              | Specifies which properties must be present in an object, ensuring mandatory attributes.                       | `"required": ["breakpoint", "style"]`                                         |
+| `additionalProperties`  | Defines whether properties not explicitly listed in the schema are allowed.                                   | `"additionalProperties": false`                                               |
+| `properties`            | Lists child properties within an object, defining each sub-property’s structure.                              | `"properties": {"width": {"type": "number", "default": 100}}`                 |
+| `items`                 | Specifies the schema for elements in an array, supporting uniformity within arrays.                           | `"items": {"type": "object", "properties": {"minWidth": {"type": "number"}}}` |
+| `events`                | Lists event handlers supported by the component, each with a name, description, and optional schema.          | `"events": [{"name": "onClick", "description": "Triggered when clicked"}]`    |
+| `documentationUrl`      | URL providing additional documentation for an event or component.                                             | `"documentationUrl": "https://example.com/event-docs"`                        |
+| `extensionFunctions`    | Custom functions allowing extension, often with arguments and a default implementation.                       | `"extensionFunctions": [{"name": "filterAlarm", "arguments": [...] }]`        |
+| `format`                | Specifies format restrictions on string values, such as `color` or `view-path`.                               | `"format": "color"`                                                           |
+| `defaultImplementation` | Defines a default code block for function-based features, guiding initial behavior.                           | `"defaultImplementation": "return True"`                                      |
+| `additionalProperties`  | Allows additional undefined properties to be included in the object.                                          | `"additionalProperties": true`                                                |
+| `pattern`               | Regular expression to enforce valid formats for a property, especially strings.                               | `"pattern": "^[+-]?[0-9]+(px\|em\|%)$"`                                       |
+| `suggestions`           | Provides predefined values or suggestions, often used for formatting.                                         | `"suggestions": {"none": "none", "date [MM/DD/YYYY]": "MM/DD/YYYY"}`          |

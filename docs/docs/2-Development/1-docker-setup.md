@@ -119,7 +119,7 @@ IGNITION_EDITION=standard
 
 ## Designer Auto-Login
 
-:::warning Security Warning
+:::danger Auto-Login Warning
 Auto-login should only be used for testing purposes and should not be used in a production environment.
 :::
 

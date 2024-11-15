@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Keith Gamble
+ * Copyright 2024 Keith Gamble
  * [License information]
  */
 package dev.kgamble.perspective.examples.common.utilities;

@@ -255,6 +255,6 @@ Deploy to local gateway:
 
 ## Next Steps
 
-- Learn about [adding components](adding-components)
+- Learn about [adding components](Adding%20Components)
 - Understand [naming conventions](naming-conventions)
 - Set up [local development](../Development/docker-setup)
