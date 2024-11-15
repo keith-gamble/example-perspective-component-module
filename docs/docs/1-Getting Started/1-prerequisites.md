@@ -7,6 +7,10 @@ description: Essential skills for rapid onboarding to Perspective component deve
 
 This guide provides the minimum knowledge needed to start building Perspective components quickly, with optional deeper learning paths for later.
 
+In general, you dont need to be an expert in any of these technologies to get started. The goal is to get you building components quickly, with the understanding that you'll learn more as you go.
+
+The videos and resources referenced here are generally aimed at beginner programmers, so if you are already more familiar with programming in general, you can likely push through some of these things much faster and just go focus on learning some syntax and concepts specific to the technologies you're less familiar with.
+
 ## Quick Reference
 
 | Technology  | Minimum Time | Recommended Time | Priority |
