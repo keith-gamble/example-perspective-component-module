@@ -42,7 +42,9 @@ val webpack by tasks.registering(NpmTask::class) {
 tasks {
     // Ensure webpack runs before processing resources
 	processResources {
-		dependsOn(webpack)	
+		dependsOn(webpack)
+        // Include webpack output in jar
+        from(projectOutput) { into("") }
 	}
 
     // Clean up the dist directory
@@ -59,16 +61,4 @@ val deepClean by tasks.registering {
     }
 
     dependsOn(project.tasks.named("clean"))
-}
-
-// Ensure the gateway project waits for web resources
-project(":gateway")?.tasks?.named("processResources")?.configure {
-    dependsOn(webpack)
-}
-
-// Configure where the web resources end up
-sourceSets {
-    main {
-        output.dir(projectOutput, "builtBy" to listOf(webpack))
-    }
 }
