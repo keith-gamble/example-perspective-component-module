@@ -52,4 +52,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "example-component-library"
 
 // Include all subprojects in the build
-include(":common", ":gateway", ":designer", ":web")
+include(":", ":common", ":gateway", ":designer", ":web")
