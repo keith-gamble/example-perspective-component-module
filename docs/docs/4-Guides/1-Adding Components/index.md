@@ -43,7 +43,13 @@ The Checkbox component we'll create will have these features:
    - Styling
    - Event handling
 
-5. [**Practice Exercises**](practice)
+5. [**Component Variants**](variants)
+
+   - Purpose of variants
+   - Adding variants using `addPaletteEntry`
+   - Best practices for creating variants
+
+6. [**Practice Exercises**](practice)
 
    - Enhance the Checkbox component with additional features
    - Create related components
