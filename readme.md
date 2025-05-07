@@ -43,7 +43,7 @@ Visit our [documentation site](https://keith-gamble.github.io/example-perspectiv
    ./gradlew build deployModl
    ```
 
-For detailed setup instructions, see our [Getting Started Guide](https://keith-gamble.github.io/example-perspective-component-module/getting-started).
+For detailed setup instructions, see our [Getting Started Guide](https://keith-gamble.github.io/example-perspective-component-module/Getting%20Started/).
 
 ## 🤝 Contributing
 
