@@ -9,9 +9,10 @@ import {
 	ComponentMeta,
 	ComponentProps,
 	PComponent,
-	PropertyTree,
-	SizeObject
+	PropertyTree
 } from '@inductiveautomation/perspective-client';
+// Type-only import: erased at compile time, so no webpack external is needed
+import type { SizeObject } from '@inductiveautomation/perspective-common';
 
 /**
  * Unique identifier for the Button component.

@@ -191,7 +191,7 @@ Events define the data structure that will be emitted when the event occurs.
     {
       "name": "onActionPerformed",
       "description": "This event is fired when the 'action' of the component occurs.",
-      "documentationUrl": "https://links.inductiveautomation.com/81-action-performed-event",
+      "documentationUrl": "https://links.inductiveautomation.com/83-action-performed-event",
       "schema": {
         "type": "object"
       }

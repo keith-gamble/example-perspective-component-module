@@ -48,19 +48,21 @@ example-component-library/
 
 ```kotlin title="build.gradle.kts"
 plugins {
-    id("io.ia.sdk.modl") version "0.3.0"
+    id("io.ia.sdk.modl") version("0.5.0")
 }
 
 ignitionModule {
     // Module definition
     name.set("Example Component Library")
     fileName.set("Example-Component-Library.modl")
-    id.set("dev.kgamble.perspective.examples")
+    id.set("dev.kgamble.perspective.examples.ExampleComponentLibrary")
+    requiredIgnitionVersion.set("8.3.0")
 
     // Project scope mapping
     projectScopes.putAll(
         mapOf(
             ":gateway" to "G",
+            ":web" to "G",
             ":designer" to "D",
             ":common" to "GD"
         )
@@ -81,11 +83,25 @@ We use Gradle's version catalog for dependency management:
 
 ```toml title="gradle/libs.versions.toml"
 [versions]
-ignition = "8.1.44"
+ignition = "8.3.9"
 
 [libraries]
 ignition-common = { module = "com.inductiveautomation.ignitionsdk:ignition-common", version.ref = "ignition" }
 ignition-designer-api = { module = "com.inductiveautomation.ignitionsdk:designer-api", version.ref = "ignition" }
+ignition-perspective-common = { module = "com.inductiveautomation.ignitionsdk:perspective-common", version.ref = "ignition" }
+```
+
+The Ignition SDK and Perspective libraries are `compileOnly` dependencies, because the gateway and Designer provide them at runtime. The Gradle wrapper is pinned to Gradle 8.7, and the modules target Java 17, the Java version Ignition 8.3 runs on.
+
+The web project's Perspective packages track the same Ignition version:
+
+```json title="web/package.json"
+{
+  "dependencies": {
+    "@inductiveautomation/perspective-client": "2.3.9",
+    "@inductiveautomation/perspective-common": "2.3.9"
+  }
+}
 ```
 
 ## Frontend Build Configuration
@@ -96,8 +112,10 @@ ignition-designer-api = { module = "com.inductiveautomation.ignitionsdk:designer
 module.exports = {
   entry: "./src/index.ts",
   output: {
+    library: "ExampleComponents",
+    path: path.join(__dirname, "dist"),
     filename: "ExampleComponents.js",
-    path: resolve("build/generated-resources"),
+    libraryTarget: "umd",
   },
   module: {
     rules: [
@@ -110,14 +128,16 @@ module.exports = {
 };
 ```
 
+After each build, a plugin in `webpack.config.js` copies `ExampleComponents.js` and `ExampleComponents.css` from `dist/` to `build/generated-resources/mounted/`, which the gateway serves as the module's mounted resources.
+
 ### NPM Scripts
 
 ```json title="web/package.json"
 {
   "scripts": {
-    "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
-    "lint": "eslint src/**/*.{ts,tsx}"
+    "clean": "rimraf dist build",
+    "build": "npm run clean && webpack --mode production"
   }
 }
 ```
@@ -161,22 +181,28 @@ Final steps:
 
 ### Web Resources
 
+The `web` project runs webpack before processing its resources, and packages the output into its JAR:
+
+```kotlin title="web/build.gradle.kts"
+tasks {
+    processResources {
+        dependsOn(webpack)
+        from(projectOutput) { into("") }
+    }
+}
+```
+
+The gateway project pulls that JAR into the module:
+
 ```kotlin title="gateway/build.gradle.kts"
-tasks.processResources {
-    from(project(":web").projectDir.resolve("build/generated-resources"))
+dependencies {
+    modlImplementation(projects.web)
 }
 ```
 
 ### Static Resources
 
-```kotlin
-tasks.processResources {
-    from("src/main/resources") {
-        include("images/**")
-        include("props/**")
-    }
-}
-```
+Files under each project's `src/main/resources` (images, `props/`, `events/`) are packaged into that project's JAR by Gradle's standard `processResources` task.
 
 ## Development Workflow
 
@@ -189,19 +215,31 @@ tasks.processResources {
    npm run watch
    ```
 
-2. Mount resources in Docker:
+2. Mount resources in Docker and point the module's resource path at them:
    ```yaml title="docker-compose.yml"
    volumes:
      - ../web:/web-resources
+   command: >
+     --
+     -Dres.path.dev.kgamble.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
    ```
 
 ### Module Deployment
 
-Deploy to local gateway:
+Ignition 8.3 loads modules only at gateway startup. For the Docker gateway, rebuild and restart:
 
 ```bash
-./gradlew build deployModl
+./gradlew build
+docker compose -f docker/docker-compose.yml restart gateway
 ```
+
+For any other Ignition 8.3 gateway, use the `deployModule` task with an API key:
+
+```bash
+./gradlew deployModule -PhostGateway=http://my-gateway:8088 -PignitionApiToken=<name:secret> -PrestartGateway=true
+```
+
+See [Development Loop](../Development/hot-reload) for details.
 
 ## Common Issues
 
@@ -231,8 +269,12 @@ Deploy to local gateway:
 
 2. **Hot Reload Not Working**
    - Verify webpack watch mode
-   - Check resource mounting
+   - Check resource mounting and the `-Dres.path...` JVM argument
    - Clear browser cache
+
+3. **Java or Schema Changes Not Showing**
+   - Restart the gateway after rebuilding; Ignition 8.3 loads modules only at startup
+   - Restart the Designer
 
 ## Best Practices
 

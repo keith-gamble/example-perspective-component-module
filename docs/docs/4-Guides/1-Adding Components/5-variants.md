@@ -152,7 +152,7 @@ public ComponentDescriptorImpl.ComponentBuilder addPaletteEntry(
 
 #### 4. Verify in the Designer
 
-After rebuilding and deploying the module (`./gradlew build deployModl`), open the Ignition Designer. In the component palette, under "Example UI Library," you should now see two entries for the Button component:
+After rebuilding the module (`./gradlew build`) and restarting the gateway (`docker compose -f docker/docker-compose.yml restart gateway`), open the Ignition Designer. In the component palette, under "Example UI Library," you should now see two entries for the Button component:
 
 - **Primary**: A button with a blue background and white text.
 - **Secondary**: A button with a gray background and black text.

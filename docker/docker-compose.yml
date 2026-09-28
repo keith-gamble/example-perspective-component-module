@@ -1,24 +1,28 @@
 services:
   gateway:
-    image: inductiveautomation/ignition:8.1.44
+    image: inductiveautomation/ignition:8.3.9
     environment:
       ACCEPT_IGNITION_EULA: Y
       GATEWAY_ADMIN_USERNAME: ${GATEWAY_USERNAME:-admin}
       GATEWAY_ADMIN_PASSWORD: ${GATEWAY_PASSWORD:-password}
-      GATEWAY_MODULES_ENABLED: perspective
+      IGNITION_EDITION: standard
+      # 8.3 treats this as an allowlist of fully-qualified module ids, including third-party modules
+      GATEWAY_MODULES_ENABLED: com.inductiveautomation.perspective,dev.kgamble.perspective.examples.ExampleComponentLibrary
+      # Accept the module's license and certificate on first boot so it loads without commissioning clicks
+      ACCEPT_MODULE_LICENSES: dev.kgamble.perspective.examples.ExampleComponentLibrary
+      ACCEPT_MODULE_CERTS: dev.kgamble.perspective.examples.ExampleComponentLibrary
       DISABLE_QUICKSTART: true
     volumes:
-      - ../build/Example-Component-Library.modl:/usr/local/bin/ignition/user-lib/modules/Example-Component-Library.modl
-      - ./backups/gateway.gwbk:/restore.gwbk
+      # Ignition 8.3 loads modules only at startup. After `./gradlew build`, run `docker compose restart gateway`.
+      # Set MODULE_FILE=Example-Component-Library.modl in docker/.env when building with signModule=true.
+      - ../build/${MODULE_FILE:-Example-Component-Library.unsigned.modl}:/usr/local/bin/ignition/user-lib/modules/Example-Component-Library.modl
       - ../web:/web-resources
     labels:
       traefik.enable: "true"
       traefik.hostname: "perspective-component"
     command: >
       -n perspective-component-gateway
-      -r /restore.gwbk
       --
-      -Dia.developer.moduleupload=true
       -Dignition.allowunsignedmodules=true
       -Dres.path.dev.kgamble.perspective.examples.ExampleComponentLibrary=/web-resources/build/generated-resources/mounted
 

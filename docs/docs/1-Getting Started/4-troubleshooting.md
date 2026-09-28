@@ -28,7 +28,7 @@ Common issues and their solutions when working with Example Component Library.
 2. Update Gradle wrapper:
 
    ```bash
-   ./gradlew wrapper --gradle-version=7.6
+   ./gradlew wrapper --gradle-version=8.7
    ```
 
 3. Clean and rebuild:
@@ -113,17 +113,33 @@ Common issues and their solutions when working with Example Component Library.
 
 #### Solutions
 
-1. Check for port conflicts:
+1. Check that the module was built before the container started, so `build/Example-Component-Library.unsigned.modl` exists
+
+2. If you publish the gateway port instead of using the Traefik proxy, check for port conflicts:
 
    ```bash
    lsof -i :8088
    ```
 
-2. Stop conflicting services:
+3. Stop conflicting services:
    ```bash
    docker-compose down
    docker system prune
    ```
+
+### Module Changes Not Showing
+
+#### Symptoms
+
+- Java, descriptor or schema changes don't appear after `./gradlew build`
+
+#### Solutions
+
+Ignition 8.3 loads modules only at gateway startup. Restart the gateway, then reopen the Designer:
+
+```bash
+docker compose -f docker/docker-compose.yml restart gateway
+```
 
 ## Still Need Help?
 

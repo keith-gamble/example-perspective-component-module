@@ -21,9 +21,11 @@ import {
   ComponentProps, // Props wrapper that includes Perspective-specific properties
   PComponent, // Type for Perspective components
   PropertyTree, // Utility for reading properties from Perspective's property tree
-  SizeObject, // Interface defining component size
   StyleObject, // Interface for Perspective's style object
 } from "@inductiveautomation/perspective-client";
+// Interface defining component size. Type-only import from perspective-common,
+// erased at compile time, so it needs no webpack external.
+import type { SizeObject } from "@inductiveautomation/perspective-common";
 
 // Component type must match the ID defined in the Java component
 // This ensures the frontend and backend components are properly linked
@@ -267,7 +269,7 @@ Our checkbox component features:
 :::tip Testing Your Component
 After implementing all scopes:
 
-1. Build the module: `./gradlew build deployModl`
+1. Build the module and restart the gateway: `./gradlew build`, then `docker compose -f docker/docker-compose.yml restart gateway`
 2. Open the Designer
 3. Create a new view
 4. Find your checkbox in the component palette
