@@ -163,7 +163,7 @@ Remember to:
 
 - Start small and build up
 - Test frequently
-- Use hot reload for quick iteration
+- Use hot reload for quick iteration on web changes, and rebuild and restart the gateway for Java and schema changes
 - Keep components focused and simple
   :::
 

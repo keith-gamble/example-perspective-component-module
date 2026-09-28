@@ -22,7 +22,7 @@ dependencies {
     // Runtime dependencies provided by Ignition
     compileOnly(libs.ignition.common)  // Core Ignition classes
     compileOnly(libs.ignition.gateway.api)  // Gateway-specific API
-    // Perspective dependencies that need to be included
-    implementation(libs.ignition.perspective.gateway)
-    implementation(libs.ignition.perspective.common)
+    // Perspective classes, provided at runtime by the Perspective module
+    compileOnly(libs.ignition.perspective.gateway)
+    compileOnly(libs.ignition.perspective.common)
 }

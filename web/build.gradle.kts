@@ -3,11 +3,11 @@ import com.github.gradle.node.npm.task.NpmTask
 // Apply necessary plugins
 plugins {
     java  // Basic Java plugin for JAR creation
-    id("com.github.node-gradle.node") version("3.2.1")  // Plugin for Node.js integration
+    id("com.github.node-gradle.node") version("7.1.0")  // Plugin for Node.js integration
 }
 
 // Define where the web resources will be generated
-val projectOutput: String by extra("$buildDir/generated-resources/")
+val projectOutput: String by extra("${layout.buildDirectory.get().asFile}/generated-resources/")
 
 // Configure the Node.js environment
 node {

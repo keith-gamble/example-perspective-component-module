@@ -113,8 +113,8 @@ Essential platform knowledge - can't skip this one.
 
 **Quick Start Resources:**
 
-1. [Perspective Pages, Views, and Containers](https://inductiveuniversity.com/courses/ignition/perspective-pages-views-and-containers/8.1) (1-2 hours)
-2. [Perspective Components and Bindings](https://inductiveuniversity.com/courses/ignition/perspective-components-and-bindings/8.1) (4 hours)
+1. [Perspective Pages, Views, and Containers](https://inductiveuniversity.com/courses/ignition/perspective-pages-views-and-containers/8.3) (1-2 hours)
+2. [Perspective Components and Bindings](https://inductiveuniversity.com/courses/ignition/perspective-components-and-bindings/8.3) (4 hours)
 3. [Building in Perspective](https://inductiveuniversity.com/courses/elective-studies/building-in-perspective) (4 hours)
 
 ## Ready to Code Check
@@ -145,7 +145,7 @@ When you're ready to deepen your knowledge:
 
 **Perspective:**
 
-- [Inductive University](https://inductiveuniversity.com/courses/ignition/ignition-overview/8.1) (Full courses)
+- [Inductive University](https://inductiveuniversity.com/courses/ignition/ignition-overview/8.3) (Full courses)
 
 ## Next Steps
 

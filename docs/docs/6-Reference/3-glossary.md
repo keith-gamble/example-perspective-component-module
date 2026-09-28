@@ -101,7 +101,7 @@ Build automation tool used for compiling code and packaging modules.
 :::info Usage Example
 
 ```bash
-./gradlew build deployModl
+./gradlew build
 ```
 
 :::
@@ -209,17 +209,16 @@ Platform used for creating consistent development environments.
 :::info Usage Example
 
 ```yaml
-version: "3.8"
 services:
   gateway:
-    image: inductiveautomation/ignition:8.1.34
+    image: inductiveautomation/ignition:8.3.9
 ```
 
 :::
 
 ### Hot Reload
 
-Development feature that updates components without full rebuilds.
+Development feature that serves web assets (TypeScript, React, CSS) from your working copy, so changes appear on refresh without rebuilding the module. Java, descriptor and schema changes need a rebuild and a gateway restart, because Ignition 8.3 loads modules only at startup.
 
 :::info Usage Example
 
@@ -237,7 +236,7 @@ Gradle feature for centralizing dependency versions.
 
 ```toml
 [versions]
-ignition = "8.1.34"
+ignition = "8.3.9"
 
 [libraries]
 ignition-common = { module = "com.inductiveautomation.ignitionsdk:ignition-common", version.ref = "ignition" }
@@ -292,9 +291,10 @@ Keep certificates and private keys secure and never commit them to version contr
 
 ## Additional Resources
 
-- [Ignition SDK Documentation](https://docs.inductiveautomation.com/display/SDK)
+- [Ignition SDK Documentation](https://www.sdk-docs.inductiveautomation.com/docs/8.3/intro)
+- [Ignition 8.3 User Manual](https://www.docs.inductiveautomation.com/docs/8.3/intro)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
-- [React Documentation](https://reactjs.org/docs)
+- [React Documentation](https://react.dev)
 - [Gradle Documentation](https://docs.gradle.org)
 
 ## Common Abbreviations

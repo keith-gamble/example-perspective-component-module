@@ -11,7 +11,8 @@
 	},
 	"dependencies": {
 		"@fiverr/afterbuild-webpack-plugin": "^1.0.0",
-		"@inductiveautomation/perspective-client": "2.1.44",
+		"@inductiveautomation/perspective-client": "2.3.9",
+		"@inductiveautomation/perspective-common": "2.3.9",
 		"axios": "^0.28.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"

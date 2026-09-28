@@ -68,7 +68,7 @@ This workflow:
 4. Preserves the artifact for review
 
 :::tip Why Java 17?
-We use Java 17 because it's the current LTS version supported by Ignition 8.1+. This ensures compatibility with the target platform.
+Ignition 8.3 runs on Java 17, and the module's class files must target it. Building with the same Java version as the gateway ensures compatibility with the target platform.
 :::
 
 ### Release Automation

@@ -40,7 +40,8 @@ This structure separates concerns while maintaining Ignition's module convention
 
 - **Type-Safe Development**: Full TypeScript support for component development
 - **Modern Build System**: Gradle with Kotlin DSL for robust build configuration
-- **Hot Reload**: Development workflow with rapid feedback
+- **Ignition 8.3**: Built against the Ignition 8.3 SDK
+- **Hot Reload**: Web assets reload without rebuilding the module
 - **Docker Integration**: Consistent development environment
 - **Comprehensive Testing**: Example test setup and best practices
 - **CI/CD Ready**: GitHub Actions workflows included
@@ -57,6 +58,7 @@ If you're familiar with Ignition development, you can jump straight to the [Quic
 
 This project leverages modern development tools:
 
+- Ignition 8.3 SDK
 - Java 17
 - Gradle (Kotlin DSL)
 - TypeScript

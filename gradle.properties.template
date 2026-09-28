@@ -8,8 +8,10 @@ signModule=false
 # ignition.signing.certAlias=certAlias
 # ignition.signing.certPassword=certPassword
 
-# If you want to run the `:deployModl` step to a gateway automatically, then fill out the following.
+# Gateway and API token used by `./gradlew deployModule` (Ignition 8.3 REST API).
+# Create the token on the gateway under Platform > Security > API Keys. Not needed for the Docker loop.
 hostGateway=http://perspective-component.localtest.me:80
+# ignitionApiToken=name:secret
 
 # This is the module version that will be used in the packaged module file.
 version=0.0.1-SNAPSHOT
